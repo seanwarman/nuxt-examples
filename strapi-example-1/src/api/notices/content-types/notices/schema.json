@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notices",
+  "info": {
+    "singularName": "notices",
+    "pluralName": "notices-content",
+    "displayName": "Notices",
+    "name": "Notices"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 30
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "PRIMARY",
+        "SECONDARY",
+        "SUCCESS",
+        "DANGER",
+        "WARNING",
+        "ALERT",
+        "INFO",
+        "LIGHT",
+        "DARK"
+      ],
+      "default": "PRIMARY"
+    }
+  }
+}

@@ -1,0 +1,180 @@
+// Vitest Snapshot v1
+
+exports[`TzInfoBox > renders correctly 1`] = `
+<div
+  class="flex flex-col items-stretch gap-6 text-dark"
+>
+  <dl
+    class="flex flex-col items-stretch"
+  >
+    <div
+      class="flex items-center justify-between"
+    >
+      <dt
+        class="text-sm font-extrabold uppercase"
+      >
+         Sub total (3 items) 
+      </dt>
+      <dd
+        class="text-right font-extrabold"
+      >
+        £5,100.00
+      </dd>
+    </div>
+  </dl>
+  <dl
+    class="flex flex-col items-stretch"
+  >
+    
+    <div
+      class="flex items-center justify-between text-primary"
+    >
+      <dt
+        class="bg text-sm uppercase"
+      >
+        C2W discount
+      </dt>
+      <dd
+        class="text-right"
+      >
+        - £1,000.00
+      </dd>
+    </div>
+    <div
+      class="flex items-center justify-between text-green-600"
+    >
+      <dt
+        class="bg text-sm uppercase"
+      >
+        signup10
+      </dt>
+      <dd
+        class="text-right"
+      >
+        - £24.99
+      </dd>
+    </div>
+    <div
+      class="flex items-center justify-between text-green-600"
+    >
+      <dt
+        class="bg text-sm uppercase"
+      >
+        freepump
+      </dt>
+      <dd
+        class="text-right"
+      >
+        - £19.99
+      </dd>
+    </div>
+    
+  </dl>
+  <dl
+    class="flex flex-col items-stretch"
+  >
+    <div
+      class="flex items-center justify-between"
+    >
+      <dt
+        class="text-sm font-extrabold uppercase"
+      >
+        You save
+      </dt>
+      <dd
+        class="text-right font-extrabold"
+      >
+        £1,044.98
+      </dd>
+    </div>
+  </dl>
+  <section>
+    <dl
+      class="flex flex-col items-stretch"
+    >
+      <div
+        class="flex items-center justify-between"
+      >
+        <dt
+          class="text-sm font-extrabold uppercase"
+        >
+          Delivery
+        </dt>
+        <dd
+          class="text-right font-extrabold uppercase"
+        >
+          Free
+        </dd>
+      </div>
+    </dl>
+    <div>
+      <span
+        class="text-sm text-gray-400"
+      >
+        <label
+          for="shipping-country"
+        >
+          Delivery to 
+        </label>
+        <select
+          class="cursor-pointer border-0 p-0 pr-7 text-sm underline"
+          id="shipping-country"
+          name="shipping-country"
+        >
+          
+          <option
+            value="1"
+          >
+            UK mainland
+          </option>
+          <option
+            value="2"
+          >
+            Northen island
+          </option>
+          <option
+            value="3"
+          >
+            Scottish highlands
+          </option>
+          <option
+            value="4"
+          >
+            Scottish islands
+          </option>
+          <option
+            value="5"
+          >
+            Isle of man
+          </option>
+          
+        </select>
+      </span>
+      <br />
+      <span
+        class="text-sm text-gray-400"
+      >
+        Est, delivery: 15/06/22
+      </span>
+    </div>
+  </section>
+  <dl
+    class="flex flex-col items-stretch"
+  >
+    <div
+      class="flex items-center justify-between"
+    >
+      <dt
+        class="text-lg font-extrabold uppercase"
+      >
+        Total
+      </dt>
+      <dd
+        class="text-lg font-extrabold uppercase"
+      >
+        £4,075.02
+      </dd>
+    </div>
+  </dl>
+</div>
+`;

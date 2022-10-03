@@ -1,0 +1,79 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import TzC2wVoucherForm from './Tz-C2wVoucherForm/Tz-C2wVoucherForm.vue';
+import TzGiftVoucherForm from './Tz-GiftVoucherForm/Tz-GiftVoucherForm.vue';
+import TzAddressForm from './Tz-AddressForm/Tz-AddressForm.vue';
+import TzLoginForm from './Tz-Login/Tz-Login.vue';
+import { socialAccountsData } from './Tz-Login/Tz-LoginForm.data.ts';
+
+import { regionData } from '../../Action/Tz-Select/Tz-Select.data';
+
+<Meta title="components/Input/Forms" component={(TzC2wVoucherForm, TzGiftVoucherForm)} />
+
+export const Template = (args) => ({
+  components: { TzC2wVoucherForm },
+  setup() {
+    return { args };
+  },
+  template: '<TzC2wVoucherForm />'
+});
+
+# Cycle to work: Voucher form
+
+<Story name="Voucher Form: Cycle to work" args={{}} parameters={{}}>
+  {Template.bind({})}
+</Story>
+
+export const GiftVoucherTemplate = (args) => ({
+  components: { TzGiftVoucherForm },
+  setup() {
+    return { args };
+  },
+  template: '<TzGiftVoucherForm />'
+});
+
+# Gift: Voucher form
+
+<Story name="Gift" args={{}} parameters={{}}>
+  {GiftVoucherTemplate.bind({})}
+</Story>
+
+export const AddressTemplate = (args) => ({
+  components: { TzAddressForm },
+  setup() {
+    return { args };
+  },
+  template: '<TzAddressForm v-bind="args" />'
+});
+
+# Delivery address form
+
+<Story
+  name="Address"
+  args={{
+    regions: regionData
+  }}
+  parameters={{}}
+>
+  {AddressTemplate.bind({})}
+</Story>
+
+export const LoginTemplate = (args) => ({
+  components: { TzLoginForm },
+  setup() {
+    return { args };
+  },
+  template: '<TzLoginForm v-bind="args" />'
+});
+
+# Account Login form
+
+<Story
+  name="Login"
+  args={{
+    socialAccounts: socialAccountsData
+  }}
+  parameters={{}}
+>
+  {LoginTemplate.bind({})}
+</Story>

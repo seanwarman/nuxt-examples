@@ -1,0 +1,42 @@
+{
+  "name": "herbie",
+  "private": true,
+  "version": "2.0.0",
+  "description": "The Herbie CMS - but newer",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "config.restore": "strapi configuration:restore -f sync/core.json",
+    "config.dump": "strapi configuration:dump -f sync/core.json -p"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^34.1.0",
+    "@ckeditor/ckeditor5-react": "^5.0.2",
+    "@strapi/design-system": "^1.1.1",
+    "@strapi/icons": "^1.1.1",
+    "@strapi/plugin-content-manager": "^4.2.0",
+    "@strapi/plugin-content-type-builder": "^4.2.0",
+    "@strapi/plugin-email": "^4.2.0",
+    "@strapi/plugin-i18n": "4.2.0",
+    "@strapi/plugin-upload": "^4.2.0",
+    "@strapi/plugin-users-permissions": "4.2.0",
+    "@strapi/provider-upload-aws-s3": "^4.2.0",
+    "@strapi/strapi": "4.2.0",
+    "@strapi/utils": "^4.2.0",
+    "mysql": "2.18.1"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "531d812a-aee2-46d3-a02c-1bbd56f0cfb0"
+  },
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

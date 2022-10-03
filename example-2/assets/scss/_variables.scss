@@ -1,0 +1,88 @@
+/**
+  WARNING: DO NOT PUT SCSS CODE IN HERE THAT RESULTS IN GENERATED CSS
+  ---------------
+  Use this file for SCSS variables only
+*/
+
+// Bootstrap Overrides
+$font-size-base: 1rem;
+$font-family-sans-serif: 'Montserrat', Helvetica, Arial, sans-serif;
+$font-weight-normal: 500;
+$headings-font-weight: 800;
+
+$display1-weight: 600;
+$display2-weight: 600;
+$display3-weight: 600;
+$display4-weight: 600;
+
+$display1-size: $font-size-base * 2.5 !default;
+$display2-size: $font-size-base * 2 !default;
+$display3-size: $font-size-base * 1.175 !default;
+$display4-size: $font-size-base * 1.5 !default;
+
+// Brand
+$brand-primary: #4d62e4;
+$brand-primary-hover: #3243af;
+$brand-border-color: #d9d9d9;
+
+// Links
+$link-color: $brand-primary;
+
+// Body
+$body-color: #222;
+$body-color-subdued: #606060;
+
+// Header
+$header-search-bg: #eee;
+$header-search-border: $brand-border-color;
+
+// Allows us to override Bootrap breakpoint vars but also exposed the values to components
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+$grid-breakpoints: (
+  xs: $breakpoint-xs,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+);
+
+// Navbar
+$navbar-padding-x: 0;
+$navbar-padding-y: 0;
+$navbar-toggler-padding-x: 0;
+$navbar-light-toggler-icon-bg: url('../icons/burger.svg');
+
+// Inputs
+$input-focus-border-color: $brand-primary;
+$input-font-size: 0.875rem;
+$input-border-radius: 8px;
+$input-border-color: #949494;
+$input-checkbox-border-color: $input-border-color;
+$input-padding-y: 0.75rem;
+
+// Buttons
+$theme-colors: (
+  primary: $brand-primary,
+  secondary: white,
+);
+$btn-min-width: 172px;
+$btn-disabled-bg-color: #cdcdcd;
+$btn-primary-active-color: #1d2a7f;
+$btn-secondary-hover-color: #8d8d8d;
+$btn-secondary-hover-border-color: #ccc;
+$btn-secondary-disabled-shadow-color: #7f7f7f;
+$btn-padding-y: 0.625rem;
+
+// Alerts
+$alert-info-color: #31708f;
+$alert-info-bg-color: #d9edf7;
+$alert-info-border-color: #bcdff1;
+
+// Cards
+$card-border-color: $brand-border-color;
+$card-withdrawn-label-color: #373a3c;

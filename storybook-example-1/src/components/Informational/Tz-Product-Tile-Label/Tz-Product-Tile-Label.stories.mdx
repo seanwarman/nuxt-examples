@@ -1,0 +1,47 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzProductTileLabel from './Tz-Product-Tile-Label.vue';
+
+<Meta
+  title="Components/Informational/Product Tile Label"
+  component={TzProductTileLabel}
+  decorators={[withDesign]}
+  argTypes={{
+    name: { control: { type: 'text' } },
+    color: { control: { type: 'color' } },
+    bgColor: { control: { type: 'color' } }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzProductTileLabel },
+  setup() {
+    return { args };
+  },
+  template: `<tz-product-tile-label v-bind="args"></tz-product-tile-label>`
+});
+
+# Product Tile Label
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      name: 'Product tile label',
+      color: '#000000',
+      bgColor: '#f0f0f0'
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=1644%3A13692'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

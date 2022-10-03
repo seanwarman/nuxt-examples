@@ -1,0 +1,148 @@
+.downloads {
+  color: rgba(0, 0, 0, 0.6);
+
+  h1 {
+    font-family: googleSansBold;
+    font-size: 35.22px;
+    color: rgba(0, 0, 0, 0.6);
+    letter-spacing: 0.25px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-family: googleSansBold;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0;
+  }
+
+  p {
+    line-height: 28px;
+    font-size: 16.57px;
+    max-width: 530px;
+    margin: 0 auto;
+
+    &.downloadEnabled {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      color: #34a853;
+
+      .mat-icon {
+        position: relative;
+        top: 4px;
+        margin-right: 7px;
+      }
+    }
+
+    &:not(.downloadEnabled):last-of-type {
+      margin-bottom: 25px;
+    }
+  }
+
+  .hidden {
+    position: absolute;
+    left: -999em;
+    width: 1em;
+    overflow: hidden;
+  }
+
+  .email-collection {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .mat-icon {
+      margin-right: 12px;
+    }
+  }
+
+  .locked {
+    min-width: 187px;
+    padding: 5px 0;
+    .mat-icon {
+      margin: 0 auto;
+    }
+  }
+
+  .filesize {
+    font-size: 12px;
+    text-align: center;
+    line-height: 16px;
+  }
+
+  .desc {
+    font-family: GoogleSansRegular;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    letter-spacing: 0.24px;
+    text-align: left;
+    line-height: 20px;
+  }
+
+  .intro {
+    display: block;
+    min-height: 10vh;
+    text-align: center;
+
+    @media screen and (min-width: 599px) {
+      min-height: 10vh;
+    }
+
+    @media screen and (min-width: 1024px) {
+      margin: 85px 25% 85px 25%;
+    }
+  }
+
+  .list {
+    display: block;
+    min-height: 15vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-direction: column;
+
+    .container {
+      padding: 32px 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      flex: 1 1;
+
+      @media screen and (min-width: 599px) {
+        justify-content: space-between;
+      }
+
+      div {
+        align-self: auto;
+
+        @media screen and (min-width: 599px) {
+          max-width: 30%;
+        }
+
+        @media screen and (min-width: 1024px) {
+          margin: 0 5%;
+        }
+      }
+
+      .column:first-child {
+        min-width: 22%;
+      }
+
+      .column:nth-child(3) {
+        @media screen and (max-width: 599px) {
+          margin-top: 16px;
+        }
+
+        * {
+          display: block;
+        }
+
+        span {
+          margin: 16px 0;
+        }
+      }
+    }
+    .container:last-of-type {
+      border-bottom: none;
+    }
+  }
+}

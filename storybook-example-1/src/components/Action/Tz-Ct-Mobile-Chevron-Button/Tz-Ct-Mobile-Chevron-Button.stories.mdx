@@ -1,0 +1,37 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzCtMobileChevronButton from './Tz-Ct-Mobile-Chevron-Button.vue';
+
+<Meta
+  title="Components/Action/CT Mobile Chevron Button"
+  component={TzCtMobileChevronButton}
+  argTypes={{
+    direction: {
+      options: ['left', 'right'],
+      control: { type: 'radio' }
+    }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzCtMobileChevronButton },
+  setup() {
+    return { args };
+  },
+  template: `
+    <tz-ct-mobile-chevron-button @click="clicked" v-bind="args" />
+  `,
+  methods: {
+    clicked: action('clicked')
+  }
+});
+
+## Example
+
+<Canvas withSource="open">
+  <Story name="Default" args={{ direction: 'left' }} parameters={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

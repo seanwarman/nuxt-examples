@@ -1,0 +1,23 @@
+<div
+  (swipeleft)="swipe('next')"
+  (swiperight)="swipe('previous')"
+  class="subsectionWrapper"
+>
+  <div
+    class="subsectionScroll"
+    role="listbox"
+    id="containerTop"
+  >
+    <app-card
+      *ngFor="let card of subsection.cards; let i = index"
+      [card]="card"
+      [attr.id]="'infocard_' + i"
+      [selected]="card.id === selectedCardId"
+      [subsection]="subsection"
+      (click)="select(card)"
+      (keydown.enter)="select(card)"
+      tabindex="0"
+      class="cardWrapper"
+    ></app-card>
+  </div>
+</div>

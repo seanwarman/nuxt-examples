@@ -1,0 +1,25 @@
+<div *ngIf="selectedImage" class="primaryMedia">
+  <picture>
+    <source media="(min-width: 900px)" [srcset]="selectedImage.defaultSrc" />
+    <source media="(min-width: 465px)" [srcset]="selectedImage.mdImagePath" />
+    <source media="(min-width: 300px)" [srcset]="selectedImage.smImagePath" />
+    <img
+      [src]="selectedImage.lgImagePath"
+      [alt]="selectedImage.altText"
+      class="responsiveImage"
+    />
+  </picture>
+  <!-- BLU-134: Temporarily hide the toggle bar -->
+  <div class="primaryToggle" *ngIf="false && secondaryImage">
+    <div class="toggleLabel">
+      3D
+      <mat-slide-toggle
+        (change)="toggleImages()"
+        color="accent"
+        class="slideToggle"
+        aria-labelledby="Toggle between 3D and Plan view">
+      </mat-slide-toggle>
+      <img [src]=toggleIcon class="toggleIcon" width="30px" height="auto"/> Plan
+    </div>
+  </div>
+</div>

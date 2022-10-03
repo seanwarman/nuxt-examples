@@ -1,0 +1,77 @@
+// Vitest Snapshot v1
+
+exports[`TzInfoBox > renders correctly 1`] = `
+<section
+  class="flex flex-col gap-0.5 text-sm font-normal uppercase text-gray-500"
+  totel="100"
+>
+  <dl
+    class="flex flex-col items-stretch"
+  >
+    <div
+      class="flex items-center justify-between"
+    >
+      <dt>
+        Sub total (1 item)
+      </dt>
+      <dd
+        class="text-right"
+      >
+        £100.00
+      </dd>
+    </div>
+  </dl>
+  <dl
+    class="flex flex-col items-stretch gap-0.5"
+  >
+    
+    <div
+      class="flex items-center justify-between text-primary"
+    >
+      <dt />
+      <dd
+        class="text-right"
+      >
+        - £29.00
+      </dd>
+    </div>
+    
+  </dl>
+  <section>
+    <dl
+      class="mt-2 flex flex-col items-stretch"
+    >
+      <div
+        class="flex items-center justify-between"
+      >
+        <dt>
+          Delivery
+        </dt>
+        <dd
+          class="text-right"
+        >
+          £0.00
+        </dd>
+      </div>
+    </dl>
+  </section>
+  <dl
+    class="mt-4 flex flex-col items-stretch"
+  >
+    <div
+      class="flex items-center justify-between text-gray-800"
+    >
+      <dt
+        class="text-lg font-extrabold"
+      >
+        Total
+      </dt>
+      <dd
+        class="text-lg font-extrabold"
+      >
+        £NaN
+      </dd>
+    </div>
+  </dl>
+</section>
+`;

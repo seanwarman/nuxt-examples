@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import TzFeatureCard from './Tz-Feature-Card.vue';
+
+<Meta
+  title="Components/Informational/Feature Card"
+  component={TzFeatureCard}
+  argTypes={{
+    fontSize: {
+      options: ['small', 'large'],
+      control: { type: 'radio' }
+    }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzFeatureCard },
+  setup() {
+    return { args };
+  },
+  template: '<tz-feature-card v-bind="args" />'
+});
+
+# Feature Card
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      tag: 'New In',
+      productName: 'Giant Stance 29.2 Mountain Bike',
+      fontSize: 'small',
+      image: {
+        src: '/src/assets/giant.jpg',
+        alt: 'Image of a bike'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

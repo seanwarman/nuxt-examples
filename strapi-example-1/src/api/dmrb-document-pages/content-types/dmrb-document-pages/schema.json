@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "dmrb_document_pages",
+  "info": {
+    "name": "DMRB Document Pages",
+    "singularName": "dmrb-document-pages",
+    "pluralName": "dmrb-document-page",
+    "displayName": "DMRB Document pages",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "notices": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::notices.notices"
+    },
+    "document_contact_field": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,213 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import TzBasketCard from './Tz-Basket-Card.vue';
+import { exampleData } from './Tz-Basket-Card.data';
+import { MobileViewports } from '@/helpers/viewports';
+
+<Meta title="components/Informational/Basket Card" component={TzBasketCard} />
+
+export const Template = (args) => ({
+  components: { TzBasketCard },
+  setup() {
+    return { args };
+  },
+  template: '<tz-basket-card v-bind="args" @remove="remove" @changeQuantity="changeQuantity"/>',
+  methods: {
+    remove: action('remove'),
+    changeQuantity: action('changeQuantity')
+  }
+});
+
+# Basket Card
+
+## Full RRP
+
+<Canvas withSource>
+  <Story
+    name="Default"
+    args={exampleData}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reduced price
+
+<Canvas withSource>
+  <Story
+    name="Reduced Price"
+    args={{ ...exampleData, ...{ price: { list: 550, rrp: 575 } } }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## No colour
+
+<Canvas withSource>
+  <Story
+    name="No Colour"
+    args={{
+      ...exampleData,
+      ...{
+        options: [
+          {
+            name: 'Size',
+            value: 'M'
+          }
+        ]
+      }
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## No size
+
+<Canvas withSource>
+  <Story
+    name="No Size"
+    args={{
+      ...exampleData,
+      ...{
+        options: [
+          {
+            name: 'Colour',
+            value: 'Gloss Blaze / Ice Papaya'
+          }
+        ]
+      }
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## No size or color
+
+<Canvas withSource>
+  <Story
+    name="No Size or Color"
+    args={{
+      ...exampleData,
+      ...{
+        options: []
+      }
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Very long colour
+
+<Canvas withSource>
+  <Story
+    name="Very long colour"
+    args={{
+      ...exampleData,
+      ...{
+        options: [
+          {
+            name: 'Colour',
+            value: 'Gloss Blaze / Ice Papaya / Acid Lime / Dark Coal / Sky Ground'
+          },
+          {
+            name: 'Size',
+            value: 'M'
+          }
+        ]
+      }
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Portrait Image
+
+The image should be of fixed aspect ratio so a portrait image should be contained within that aspect ratio.
+
+<Canvas withSource>
+  <Story
+    name="Portrait image"
+    args={{
+      ...exampleData,
+      ...{
+        image: {
+          src: '109364-405055_1_Supersize.jpg',
+          alt: ''
+        },
+        title: 'Cane Creek Valt Steel Spring For Double Barrel'
+      }
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Multiple Units
+
+<Canvas withSource>
+  <Story
+    name="Multiple units"
+    args={{
+      ...exampleData,
+      ...{
+        price: { list: 550, rrp: 575 },
+        quantity: 3
+      }
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Multiple Units > 20
+
+Quantity selector to max to 20 items
+
+<Canvas withSource>
+  <Story
+    name="Multiple units > 20"
+    args={{
+      ...exampleData,
+      ...{
+        price: { list: 550, rrp: 575 },
+        quantity: 4,
+        stockQuantity: 30
+      }
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

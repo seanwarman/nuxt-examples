@@ -1,0 +1,72 @@
+<mat-card
+  [class.card-selected]="selected"
+  [ngClass]="(card.id =='introduction')?'intro':'card'"
+  >
+  <div class="cardContent">
+    <mat-card-title class="cardTitle">
+      <img mat-card-avatar *ngIf="card.icon" src="{{card.icon}}" />
+      <h3 *ngIf="card.id =='introduction'">{{ card.title }}</h3>
+    </mat-card-title>
+    <div *ngIf="card.id =='introduction'" class="cardBodyWrapper">
+      <img *ngIf="card.infoImage" src="{{card.infoImage}}" class="infoImage"/>
+      <p class="cardBody" [innerHtml]="card.body"></p>
+    </div>
+    <div *ngIf="card.id =='introduction'" class="nextArrow">
+      <button mat-stroked-button color="primary" (click)="swipe('next')">Get Started</button>
+    </div>
+    <mat-expansion-panel [expanded]="this.selected" *ngIf="card.id !=='introduction'">
+      <mat-expansion-panel-header class="expansion-panel">
+          <span class="cardTitle" *ngIf="card.id !=='introduction'">{{ card.title }}</span>
+      </mat-expansion-panel-header>
+      <mat-card-content>
+        <div class="thumbnailWrapper">
+          <img *ngIf="card.thumbnail" src="{{card.thumbnail}}" class="cardThumbnail"/>
+        </div>
+        <div class="cardBodyWrapper">
+          <img *ngIf="card.infoImage" src="{{card.infoImage}}" class="infoImage"/>
+          <p class="cardBody" [innerHtml]="card.body"></p>
+        </div>
+        <div class="cardHintWrapper" *ngIf="card.hint">
+          <mat-divider [inset]="true"></mat-divider>
+          <div class="hintFlex">
+            <img class="cardHintIcon" src="{{card.hintIcon}}"/>
+            <div class="innerFlex">
+              <p class="hintText">Key Hints</p>
+              <p class="hintBody" [innerHtml]="card.hint"></p>
+              <div class="cardHintLinkWrapper" *ngIf="card.hintLink">
+                <a class="linkFlex" *ngIf="isLinkExternal(card.hintLink.url)"
+                    [href]="card.hintLink.url"
+                    [target]="_blank"
+                >
+                  <div class="innerLinkFlex">
+                    <p>{{ card.hintLink.label }}</p>
+                  </div>
+                  <mat-icon svgIcon="arrow-forward" aria-hidden="true"></mat-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardLinkWrapper" *ngIf="card.link">
+          <a class="linkFlex" *ngIf="isLinkExternal(card.link.url)"
+              [href]="card.link.url"
+              [target]="_blank"
+          >
+            <div class="innerLinkFlex">
+              <p>{{ card.link.label }}</p>
+            </div>
+            <mat-icon svgIcon="arrow-forward" aria-hidden="true"></mat-icon>
+          </a>
+          <a class="linkFlex" *ngIf="!isLinkExternal(card.link.url)"
+              [routerLink]="card.link.url"
+          >
+            <div class="innerLinkFlex">
+              <p>{{ card.link.label }}</p>
+            </div>
+            <mat-icon svgIcon="arrow-forward" aria-hidden="true"></mat-icon>
+          </a>
+        </div>
+      </mat-card-content>
+    </mat-expansion-panel>
+  </div>
+</mat-card>

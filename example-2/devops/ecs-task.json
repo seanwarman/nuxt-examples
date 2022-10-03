@@ -1,0 +1,35 @@
+{
+    "containerDefinitions": [
+        {
+          "name": "nuxt",
+          "image": "GITVAR_IMAGE",
+          "memory": 256,
+          "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+              "awslogs-group": "GITVAR_ECS_LOGS",
+              "awslogs-region": "eu-west-2",
+              "awslogs-stream-prefix": "ecs"
+            }
+        },
+          "environment" : [
+            { "name" : "HOST", "value" : "0.0.0.0" },
+            { "name" : "API_ENDPOINT", "value" : "GITVAR_API_URL" },
+            { "name" : "API_BROWSER_ENDPOINT", "value" : "GITVAR_API_URL_BROWSER" },
+            { "name" : "CMS_API_URL", "value" : "GITVAR_CMS_API_URL" },
+            { "name" : "CMS_API_URL_BROWSER", "value" : "GITVAR_CMS_API_URL_BROWSER" },
+            { "name" : "ENVIRONMENT", "value" : "production" },
+            { "name" : "GTM_ID", "value" : "GITVAR_GTM_ID" },
+            { "name" : "GTM_AUTH", "value" : "GITVAR_GTM_AUTH" },
+            { "name" : "GTM_PREVIEW", "value" : "GITVAR_GTM_PREVIEW" }
+          ],
+          "portMappings": [
+            {
+              "containerPort": 3000,
+              "hostPort": 0
+            }
+          ]
+        }
+    ],
+    "family": "GITVAR_ECS_TASK"
+  }

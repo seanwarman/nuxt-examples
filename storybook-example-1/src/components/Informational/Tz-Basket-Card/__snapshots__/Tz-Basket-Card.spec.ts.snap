@@ -1,0 +1,189 @@
+// Vitest Snapshot v1
+
+exports[`Button setup > renders correctly 1`] = `
+<div>
+  <div
+    class="flex gap-9 bg-gray-50 p-[18px] sm:p-8 sm:pl-11 lg:gap-24"
+  >
+    <div>
+      <img
+        alt=""
+        class="pt-4.5 aspect-[3/2] w-[89px] object-contain mix-blend-multiply sm:w-[153px] sm:pt-0"
+        src="/244988/244988-829747_1_supersize.jpg"
+      />
+    </div>
+    <div
+      class="flex-1"
+    >
+      <div
+        class="flex flex-col gap-2 lg:gap-7"
+      >
+        <span
+          class="text-base font-semibold leading-5 line-clamp-2"
+        >
+          <a
+            class="hover:underline focus:underline focus:outline-none"
+            href="/.specialized-rockhopper-sport-27-5-mountain-bike-2022-hardtail-mtb_244988.htm?829688"
+          >
+            
+            Specialized Rockhopper Sport 27.5" Mountain Bike 2022
+            
+          </a>
+        </span>
+        <div
+          class="flex flex-col gap-3"
+        >
+          <ul
+            class="text-sm font-semibold leading-5 text-[#878787]"
+          >
+            
+            <li
+              class="line-clamp-2"
+            >
+              Colour: Gloss Blaze / Ice Papaya
+            </li>
+            <li
+              class="line-clamp-2"
+            >
+              Size: M
+            </li>
+            
+          </ul>
+          <div
+            class="flex flex-col gap-0"
+          >
+            <span
+              class="font-bold"
+            >
+              £575.00
+            </span>
+          </div>
+          <div>
+            <div
+              class="tz-select-container relative inline w-full"
+            >
+              <!-- controls -->
+              <button
+                class="inline-flex w-full items-center justify-between gap-0 rounded-[5px] border p-1 focus:border-dark focus:ring-0 overflow-hidden focus-within:ring border-gray-400"
+                data-test="tz-select-button"
+                id="tzSelectButton"
+                tabindex="0"
+              >
+                <!-- value content -->
+                <div>
+                  <span
+                    class="block flex items-center whitespace-nowrap py-1 leading-3 px-3"
+                    data-test="tz-select-icon"
+                  >
+                    <!--v-if-->
+                     1
+                  </span>
+                </div>
+                <!-- button section -->
+                <div
+                  class="border-l border-l-gray-400 px-2 flex items-center justify-center"
+                  data-test="tz-select-chevron-wrapper"
+                >
+                  <div
+                    class="transition-transform duration-300 rotate-90"
+                  >
+                    <svg
+                      class="block w-5 text-primary scale-75"
+                      fill="none"
+                      viewBox="0 0 32 32"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M19.775 16 4.555 7.629l2.89-5.258L24.26 11.62c3.454 1.9 3.454 6.863 0 8.762L7.447 29.63l-2.893-5.26L19.774 16Z"
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                    <span
+                      class="sr-only"
+                    >
+                       Select an option, you have selected 1
+                    </span>
+                  </div>
+                </div>
+              </button>
+              <!-- options -->
+              <transition-stub>
+                <!--v-if-->
+              </transition-stub>
+              <!-- Phantom select - useful for forms -->
+              <div
+                class="hidden"
+              >
+                <label
+                  for="dropdown"
+                />
+                <select
+                  id="dropdown"
+                  name="dropdown"
+                >
+                  
+                  <option
+                    selected="selected"
+                    value="1"
+                  >
+                    1
+                  </option>
+                  <option
+                    value="2"
+                  >
+                    2
+                  </option>
+                  <option
+                    value="3"
+                  >
+                    3
+                  </option>
+                  <option
+                    value="4"
+                  >
+                    4
+                  </option>
+                  <option
+                    value="5"
+                  >
+                    5
+                  </option>
+                  
+                </select>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex items-end justify-between"
+          >
+            <button
+              class="bg pb-[3px] text-xs font-bold uppercase tracking-widest text-gray-500 hover:underline focus:text-black focus:underline focus:outline-0"
+              role="button"
+              type="button"
+            >
+               Remove 
+            </button>
+            <div
+              class="flex flex-col text-right"
+            >
+              <span
+                class="mb-0 text-base font-bold"
+              >
+                <span
+                  class="sr-only"
+                >
+                  Line price:
+                </span>
+                 £575.00
+              </span>
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

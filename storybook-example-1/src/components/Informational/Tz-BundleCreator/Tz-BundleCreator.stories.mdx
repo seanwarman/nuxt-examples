@@ -1,0 +1,43 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzBundleCreator from './Tz-BundleCreator.vue';
+import { data } from './Tz-BundleCreator.options.ts';
+
+<Meta
+  title="Components/Informational/Bundle Creator"
+  component={TzBundleCreator}
+  decorators={[withDesign]}
+  argTypes={{}}
+/>
+
+export const Template = (args) => ({
+  components: { TzBundleCreator },
+  setup() {
+    return { args };
+  },
+  template: `<tz-bundle-creator v-bind="args"></tz-bundle-creator>`
+});
+
+## Default Product Tile
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      bundle: data.bundle,
+      products: data.products
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=1644%3A13692'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

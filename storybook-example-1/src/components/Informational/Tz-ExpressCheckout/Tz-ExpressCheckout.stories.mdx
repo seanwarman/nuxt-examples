@@ -1,0 +1,123 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import TzExpressCheckout from '@/components/Informational/Tz-ExpressCheckout/Tz-ExpressCheckout.vue';
+import TzButton from '@/components/Action/Tz-Button/Tz-Button.vue';
+import { MobileViewports } from '@/helpers/viewports';
+
+<Meta title="components/Informational/Express Checkout" component={TzExpressCheckout} />
+
+export const Template = (args) => ({
+  components: { TzExpressCheckout, TzButton },
+  setup() {
+    return { args };
+  },
+  template: `<tz-express-checkout v-bind="args">
+    <tz-button size="md" theme="light" class="w-[190px]">Apple Pay</tz-button>
+    <tz-button size="md" theme="light" class="w-[190px]">PayPal</tz-button>
+  </tz-express-checkout>`
+});
+
+# Basket: Express Checkout
+
+<Canvas withSource>
+  <Story
+    name="Default"
+    args={{
+      options: [
+        {
+          heading: 'Returning Customer',
+          subHeading: 'Log in to access your account',
+          value: 'login'
+        },
+        {
+          heading: 'Guest Checkout',
+          subHeading: "You'll be able to create and account later",
+          value: 'guest'
+        }
+      ],
+      expressHeading: 'Express Checkout',
+      expressSubHeading: 'Checkout fast with express options'
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Single Express Option
+
+export const SingleExpressTemplate = (args) => ({
+  components: { TzExpressCheckout, TzButton },
+  setup() {
+    return { args };
+  },
+  template: `<tz-express-checkout v-bind="args">
+    <tz-button size="md" theme="light" class="w-[190px]">PayPal</tz-button>
+  </tz-express-checkout>`
+});
+
+<Canvas withSource>
+  <Story
+    name="Single Express Option"
+    args={{
+      options: [
+        {
+          heading: 'Returning Customer',
+          subHeading: 'Log in to access your account',
+          value: 'login'
+        },
+        {
+          heading: 'Guest Checkout',
+          subHeading: "You'll be able to create and account later",
+          value: 'guest'
+        }
+      ],
+      expressHeading: 'Express Checkout',
+      expressSubHeading: 'Checkout fast with express options'
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {SingleExpressTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## No Express Option
+
+export const NoExpressTemplate = (args) => ({
+  components: { TzExpressCheckout, TzButton },
+  setup() {
+    return { args };
+  },
+  template: `<tz-express-checkout v-bind="args"></tz-express-checkout>`
+});
+
+<Canvas withSource>
+  <Story
+    name="No Express Option"
+    args={{
+      options: [
+        {
+          heading: 'Returning Customer',
+          subHeading: 'Log in to access your account',
+          value: 'login'
+        },
+        {
+          heading: 'Guest Checkout',
+          subHeading: "You'll be able to create and account later",
+          value: 'guest'
+        }
+      ],
+      expressHeading: 'Express Checkout',
+      expressSubHeading: 'Checkout fast with express options'
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {NoExpressTemplate.bind({})}
+  </Story>
+</Canvas>

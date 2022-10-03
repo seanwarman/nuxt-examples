@@ -1,0 +1,41 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  class="m-auto w-full pb-2 max-w-[395px]"
+>
+  <ul
+    class="flex w-full"
+  >
+    
+    <li
+      class="relative flex-1 active"
+    >
+      <span
+        class="inline-block h-full w-full p-2 text-center text-xs uppercase tracking-widest text-gray-500 after:absolute after:top-full after:left-0 after:right-0 after:bottom-auto after:h-2 after:bg-gray-100 after:content-[''] font-black text-gray-900 after:bg-[#318B12]"
+      >
+        Your details
+      </span>
+    </li>
+    <li
+      class="relative flex-1"
+    >
+      <span
+        class="inline-block h-full w-full p-2 text-center text-xs uppercase tracking-widest text-gray-500 after:absolute after:top-full after:left-0 after:right-0 after:bottom-auto after:h-2 after:bg-gray-100 after:content-['']"
+      >
+        Delivery
+      </span>
+    </li>
+    <li
+      class="relative flex-1"
+    >
+      <span
+        class="inline-block h-full w-full p-2 text-center text-xs uppercase tracking-widest text-gray-500 after:absolute after:top-full after:left-0 after:right-0 after:bottom-auto after:h-2 after:bg-gray-100 after:content-['']"
+      >
+        Payment
+      </span>
+    </li>
+    
+  </ul>
+</div>
+`;

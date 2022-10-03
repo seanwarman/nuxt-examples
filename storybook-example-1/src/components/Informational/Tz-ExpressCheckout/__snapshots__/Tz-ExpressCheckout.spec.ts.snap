@@ -1,0 +1,43 @@
+// Vitest Snapshot v1
+
+exports[`TzExpressCheckout > renders correctly 1`] = `
+<section
+  class="flex flex-col items-center gap-5 text-gray-800 sm:gap-16"
+>
+  <div
+    class="flex flex-col gap-5 sm:flex-row"
+  >
+    
+    <button
+      class="group block min-h-[114px] w-[250px] rounded-sm border p-4 px-5 text-center sm:py-7"
+    >
+      <span
+        class="block pb-3 text-base font-black uppercase leading-5 tracking-wider group-hover:underline group-focus:underline"
+      >
+        x
+      </span>
+      <span
+        class="mb-4 block min-h-[32px] text-sm leading-4"
+      >
+        y
+      </span>
+    </button>
+    <button
+      class="group block min-h-[114px] w-[250px] rounded-sm border p-4 px-5 text-center sm:py-7"
+    >
+      <span
+        class="block pb-3 text-base font-black uppercase leading-5 tracking-wider group-hover:underline group-focus:underline"
+      >
+        a
+      </span>
+      <span
+        class="mb-4 block min-h-[32px] text-sm leading-4"
+      >
+        b
+      </span>
+    </button>
+    
+  </div>
+  <!--v-if-->
+</section>
+`;

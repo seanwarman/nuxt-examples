@@ -1,0 +1,155 @@
+// Vitest Snapshot v1
+
+exports[`Tz-NavPrimary.vue setup > renders correctly 1`] = `
+<div
+  class="border-neutral-200 relative z-50 flex justify-between border-b-2 bg-white py-4"
+>
+  
+  <section
+    class="block"
+  >
+    <nav
+      class="block w-full bg-white"
+      role="shop"
+    >
+      <ul
+        class="tz-primary-nav container flex gap-6 bg-white"
+      >
+        
+        <li
+          class="p-0 inline-block"
+        >
+          <a
+            class="col-span-11 inline-flex flex-col justify-between text-slate-700 no-underline after:pointer-events-none after:invisible after:h-0 after:select-none after:overflow-hidden after:font-bold hover:text-gray-900"
+            data-text="Bikes"
+            href="/bikes"
+            tabindex="0"
+          >
+            Bikes
+          </a>
+          <!--v-if-->
+        </li>
+        <li
+          class="p-0 inline-block"
+        >
+          <a
+            class="col-span-11 inline-flex flex-col justify-between text-slate-700 no-underline after:pointer-events-none after:invisible after:h-0 after:select-none after:overflow-hidden after:font-bold hover:text-gray-900 cursor-pointer"
+            data-text="Accessories"
+            tabindex="0"
+          >
+            Accessories
+          </a>
+          <!--v-if-->
+        </li>
+        <li
+          class="p-0 inline-block"
+        >
+          <a
+            class="col-span-11 inline-flex flex-col justify-between text-slate-700 no-underline after:pointer-events-none after:invisible after:h-0 after:select-none after:overflow-hidden after:font-bold hover:text-gray-900 cursor-pointer"
+            data-text="Parts & Components"
+            tabindex="0"
+          >
+            Parts & Components
+          </a>
+          <!--v-if-->
+        </li>
+        <li
+          class="p-0 inline-block"
+        >
+          <a
+            class="col-span-11 inline-flex flex-col justify-between text-slate-700 no-underline after:pointer-events-none after:invisible after:h-0 after:select-none after:overflow-hidden after:font-bold hover:text-gray-900"
+            data-text="Clothing"
+            href="/clothing"
+            tabindex="0"
+          >
+            Clothing
+          </a>
+          <!--v-if-->
+        </li>
+        <li
+          class="p-0 inline-block"
+        >
+          <a
+            class="col-span-11 inline-flex flex-col justify-between text-slate-700 no-underline after:pointer-events-none after:invisible after:h-0 after:select-none after:overflow-hidden after:font-bold hover:text-gray-900"
+            data-text="Brands"
+            href="/brands"
+            tabindex="0"
+          >
+            Brands
+          </a>
+          <!--v-if-->
+        </li>
+        <li
+          class="p-0 inline-block"
+        >
+          <a
+            class="col-span-11 inline-flex flex-col justify-between text-slate-700 no-underline after:pointer-events-none after:invisible after:h-0 after:select-none after:overflow-hidden after:font-bold hover:text-gray-900"
+            data-text="Offers"
+            href="/offers"
+            tabindex="0"
+          >
+            Offers
+          </a>
+          <!--v-if-->
+        </li>
+        
+      </ul>
+    </nav>
+  </section>
+  <section
+    class="block"
+  >
+    <nav
+      class="block w-full bg-white"
+      role="support"
+    >
+      <ul
+        class="tz-primary-nav container flex gap-6 bg-white"
+      >
+        
+        <li
+          class="p-0 inline-block"
+        >
+          <a
+            class="col-span-11 inline-flex flex-col justify-between text-slate-700 no-underline after:pointer-events-none after:invisible after:h-0 after:select-none after:overflow-hidden after:font-bold hover:text-gray-900"
+            data-text="Expert advice"
+            href="/expert-advice"
+            tabindex="0"
+          >
+            Expert advice
+          </a>
+          <!--v-if-->
+        </li>
+        <li
+          class="p-0 inline-block"
+        >
+          <a
+            class="col-span-11 inline-flex flex-col justify-between text-slate-700 no-underline after:pointer-events-none after:invisible after:h-0 after:select-none after:overflow-hidden after:font-bold hover:text-gray-900"
+            data-text="Customer support"
+            href="/customer/support"
+            tabindex="0"
+          >
+            Customer support
+          </a>
+          <!--v-if-->
+        </li>
+        <li
+          class="p-0 inline-block"
+        >
+          <a
+            class="col-span-11 inline-flex flex-col justify-between text-slate-700 no-underline after:pointer-events-none after:invisible after:h-0 after:select-none after:overflow-hidden after:font-bold hover:text-gray-900"
+            data-text="Cycle to work"
+            href="/cycle-to-work"
+            tabindex="0"
+          >
+            Cycle to work
+          </a>
+          <!--v-if-->
+        </li>
+        
+      </ul>
+    </nav>
+  </section>
+  
+</div>
+`;

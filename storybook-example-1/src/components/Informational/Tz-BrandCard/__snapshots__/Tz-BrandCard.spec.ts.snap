@@ -1,0 +1,39 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  class="brand-card relative border p-9"
+  data-v-dbdf2f12=""
+>
+  <div
+    class="flex flex-col items-center"
+    data-v-dbdf2f12=""
+  >
+    <img
+      alt="Orbea"
+      class="mb-8 px-12"
+      data-v-dbdf2f12=""
+      src="/orbeaTitle.jpeg"
+    />
+    <img
+      alt="Orbea Bike"
+      class="mb-7 mix-blend-multiply"
+      data-v-dbdf2f12=""
+      src="/orbea.jpeg"
+    />
+    <a
+      class="brand-link"
+      data-v-dbdf2f12=""
+      href="/brand/orbea"
+      target="_blank"
+    >
+      <span
+        class="brand-product-title font-semibold"
+        data-v-dbdf2f12=""
+      >
+        Orbea Rise H30
+      </span>
+    </a>
+  </div>
+</div>
+`;

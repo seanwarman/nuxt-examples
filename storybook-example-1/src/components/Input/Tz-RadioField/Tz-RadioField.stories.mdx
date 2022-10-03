@@ -1,0 +1,278 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzRadioField from './Tz-RadioField.vue';
+import { MobileViewports } from '@/helpers/viewports';
+
+<Meta title="components/Input/Radio field" component={TzRadioField} />
+
+export const Template = (args) => ({
+  components: { TzRadioField },
+  setup() {
+    return { args };
+  },
+  template: '<tz-radio-field v-bind="args"></tz-radio-field>'
+});
+
+# Radio Field
+
+## Default
+
+<Canvas withSource>
+  <Story
+    name="Default Layout"
+    args={{
+      name: 'default-1',
+      label: 'Do you know the answer?',
+      options: [
+        {
+          value: 'yes',
+          label: 'Yes'
+        },
+        {
+          value: 'no',
+          label: 'No'
+        }
+      ]
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Selected state
+
+<Canvas withSource>
+  <Story
+    name="With value"
+    args={{
+      name: 'default-2',
+      label: 'Do you know the answer',
+      options: [
+        {
+          value: 'yes',
+          label: 'Yes'
+        },
+        {
+          value: 'no',
+          label: 'No'
+        }
+      ],
+      value: 'yes'
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Validation Hint
+
+Validation hint can be used to indicate whether a field is optional or required, etc.
+
+<Canvas withSource>
+  <Story
+    name="With Validation Hint"
+    args={{
+      name: 'default-3',
+      label: 'Do you know the answer?',
+      validationHint: 'optional',
+      options: [
+        {
+          value: 'yes',
+          label: 'Yes'
+        },
+        {
+          value: 'no',
+          label: 'No'
+        }
+      ]
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Invalid State
+
+Setting 'error' to true will display the invalid state
+
+<Canvas withSource>
+  <Story
+    name="Invalid"
+    args={{
+      name: 'default-3',
+      label: 'Do you know the answer?',
+      options: [
+        {
+          value: 'yes',
+          label: 'Yes'
+        },
+        {
+          value: 'no',
+          label: 'No'
+        }
+      ],
+      error: true
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Invalid State with Message
+
+Passing a message to 'error' will display the message
+
+<Canvas withSource>
+  <Story
+    name="Invalid with Message"
+    args={{
+      name: 'default-3',
+      label: 'Do you know the answer?',
+      options: [
+        {
+          value: 'yes',
+          label: 'Yes'
+        },
+        {
+          value: 'no',
+          label: 'No'
+        }
+      ],
+      error: 'You must select an option'
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Collection Locations
+
+<Canvas withSource>
+  <Story
+    name="Collection Locations"
+    args={{
+      name: 'collection-location',
+      layout: 'inline-desktop',
+      options: [
+        {
+          value: 'swansea',
+          label: 'Swansea (SA7 9HF)'
+        },
+        {
+          value: 'cardiff',
+          label: 'Cardiff (CF1 8EF)'
+        }
+      ]
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Delivery Options
+
+<Canvas withSource>
+  <Story
+    name="Delivery options"
+    args={{
+      name: 'shipping-method',
+      showBorder: false,
+      options: [
+        {
+          value: 'free',
+          label: 'Free next day delivery',
+          description: 'Get it by 16th - 18th'
+        },
+        {
+          value: 'standard',
+          label: '£2.95 standard uk delivery',
+          description: 'Get it by 16th - 18th'
+        },
+        {
+          value: 'express',
+          label: '£5.00 next day delivery',
+          description: 'Get it by June 15th'
+        },
+        {
+          value: 'collection',
+          label: 'Or free collection from Tredz store',
+          description: 'Collection from Cardiff or Swansea store only\nReady to collect from June 15th'
+        }
+      ]
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Inline Layout
+
+<Canvas withSource>
+  <Story
+    name="Inline Layout"
+    args={{
+      name: 'inline-1',
+      layout: 'inline',
+      label: 'Do you know the answer?',
+      options: [
+        {
+          value: 'yes',
+          label: 'Yes'
+        },
+        {
+          value: 'no',
+          label: 'No'
+        }
+      ]
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Inline Invalid State with Message
+
+Passing a message to 'error' will display the message
+
+<Canvas withSource>
+  <Story
+    name="Inline Invalid Message"
+    args={{
+      name: 'inline-3',
+      layout: 'inline',
+      label: 'Do you know the answer?',
+      options: [
+        {
+          value: 'yes',
+          label: 'Yes'
+        },
+        {
+          value: 'no',
+          label: 'No'
+        }
+      ],
+      error: 'Please select an answer'
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -1,0 +1,77 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import { DiscountType } from '@/components/Informational/types';
+import TzBasketTotalsSummary from './Tz-Basket-Totals-Summary.vue';
+import { data } from './Tz-Basket-Totals-Summary.data.ts';
+import { MobileViewports } from '@/helpers/viewports';
+
+<Meta title="components/Informational/Basket Totals Summary" component={TzBasketTotalsSummary} />
+
+export const Template = (args) => ({
+  components: { TzBasketTotalsSummary },
+  setup() {
+    return { args };
+  },
+  template: `<tz-basket-totals-summary v-bind="args" @deliveryOptionChanged="deliveryOptionChanged">{{ args.text }}</tz-basket-totals-summary>`,
+  methods: {
+    deliveryOptionChanged: action('deliveryOptionChanged')
+  }
+});
+
+# Basket Totals Summary
+
+Intended to be used in the basket where shipping country can be updated.
+
+When the user selects a new delivery location, the `deliveryOptionChanged` event fires and will need to trigger a recalulation
+of the total values in the parent view. This component is "dumb" and doesn't perform any calculations itself.
+
+<Canvas withSource>
+  <Story name="Default" args={data}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+## With selected delivery option
+
+With a selected delivery option set, the delivery option is fixed.
+
+<Canvas withSource>
+  <Story
+    name="With selected delivery option"
+    args={{
+      ...data,
+      ...{
+        selectedShippingCountry: 3
+      }
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With no discounts
+
+<Canvas withSource>
+  <Story
+    name="With no discounts"
+    args={{
+      ...data,
+      ...{
+        discounts: null,
+        savings: 0,
+        total: 5100
+      }
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

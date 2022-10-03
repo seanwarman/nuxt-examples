@@ -1,0 +1,35 @@
+<app-layout>
+  <ng-container ngProjectAs="desktop-layout-nav">
+    <app-subsection-nav [subsections]="section.children"></app-subsection-nav>
+  </ng-container>
+  <ng-container ngProjectAs="layout-title">
+    <div class="sectionTitleWrapper">
+      <img class="sectionTitleIcon" src="{{ section.icon }}" />
+      <h2 class="sectionTitle">{{ section.title }}</h2>
+    </div>
+  </ng-container>
+  <ng-container ngProjectAs="layout-primary-media">
+    <app-threejs-model
+      *ngIf="modelPath && updateModel"
+      class="responsiveImage"
+      [modelPath]="modelPath"
+      [updateModel]="updateModel"
+      [sectionTitle]="section.title"
+    ></app-threejs-model>
+    <app-primary-media
+      *ngIf="primaryImageValue && (!modelPath || !updateModel)"
+      class="primaryMedia"
+      [primaryImageValue]="primaryImageValue"
+    ></app-primary-media>
+  </ng-container>
+  <ng-container ngProjectAs="mobile-layout-nav">
+    <app-subsection-nav
+      class="mobileSubNav"
+      [subsections]="section.children"
+      [sectionName]="section.title"
+    ></app-subsection-nav>
+  </ng-container>
+  <ng-container ngProjectAs="layout-content">
+    <router-outlet></router-outlet>
+  </ng-container>
+</app-layout>

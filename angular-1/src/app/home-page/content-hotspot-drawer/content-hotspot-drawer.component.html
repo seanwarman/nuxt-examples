@@ -1,0 +1,105 @@
+<div>
+  <mat-tab-group
+    class="content-preview-group"
+    animationDuration="0s"
+    [selectedIndex]="setHotspotIndex(this.selectedHotspot)">
+    <mat-tab *ngFor="let tab of tabs; let tabIndex=index;">
+      <ng-template matTabContent>
+        <div class="content-group-wrapper">
+          <div class="content-preview-header content-preview-wrapper">
+            <img
+              [src]="tab.icon"
+              width="42px"
+              height="auto"
+              alt="Section icon"
+              style="margin: 12px auto;display: block;"
+            />
+            <h4 style="font-size: 35px; margin:0px">
+              <b>{{ tab.label }}</b>
+            </h4>
+          </div>
+          <div
+            class="content-preview-wrapper"
+            fxFlex
+            fxLayout.gt-md="row"
+            fxLayout.lt-md="column"
+          >
+            <div
+              fxFlex.lt-md="0 0 0%"
+              fxFlex.gt-md
+              fxFlexAlign="center"
+              fxFlexOrder.lt-md="0"
+              class="content-preview-body"
+            >
+              <div class="text-content">
+                <img
+                  [src]="tab.learnIcon"
+                  width="42px"
+                  height="auto"
+                  alt="Section icon"
+                  *ngIf="tab.slug !=='room-planner'"
+                />
+                <h5 *ngIf="tab.slug !=='room-planner'" style="font-size: 28px; margin-top:0px">
+                  <b>Learn</b>
+                </h5>
+                <p>{{ tab.body }}</p>
+                <button *ngIf="tab.firstSubsection" mat-stroked-button [routerLink]="['/', tab.slug, tab.firstSubsection]">
+                  View {{ tab.label }} guide
+                </button>
+                <button *ngIf="tab.slug =='room-planner'" mat-stroked-button [routerLink]="['/', tab.slug]">
+                  View {{ tab.label }} guide
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="content-preview-wrapper"
+            fxFlex
+            fxLayout.gt-md="row"
+            fxLayout.lt-md="column"
+            *ngIf="tab.slug !=='room-planner'"
+          >
+            <div
+              fxFlex.lt-md="0 0 0%"
+              fxFlex.gt-md
+              fxFlexAlign="center"
+              fxFlexOrder.lt-md="0"
+              class="content-preview-body"
+            >
+              <div class="text-content">
+                <img
+                  [src]="tab.designIcon"
+                  width="42px"
+                  height="auto"
+                  alt="Section icon"
+                />
+                <h5 style="font-size: 28px; margin-top:0px">
+                  <b>Design</b>
+                </h5>
+<!--                <p>-->
+<!--                  Use the Room Designer to plan your own room.-->
+<!--                </p>-->
+<!--                <button mat-stroked-button [routerLink]="['/', 'room-planner']">-->
+<!--                  View room designer-->
+<!--                </button>-->
+                <a [routerLink]="['/', 'room-planner']"
+                >
+                  Use the <div class="linkText">Room Designer</div> to plan your own room.
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hotspot-nav-wrapper">
+          <button mat-button *ngIf="notFirstOrLast(tabIndex -1, tabs.length)" (click)="emitNavigation(tabs[tabIndex -1].slug)">
+            <mat-icon>navigate_before</mat-icon>{{ tabs[tabIndex -1].label }}
+          </button>
+          <button mat-button *ngIf="notFirstOrLast(tabIndex + 1, tabs.length)" (click)="emitNavigation(tabs[tabIndex +1].slug)">
+            {{ tabs[tabIndex +1].label }}<mat-icon>navigate_next</mat-icon>
+          </button>
+        </div>
+      </ng-template>
+      <ng-template mat-tab-label>{{ tab.label }}</ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>

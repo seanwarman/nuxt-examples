@@ -1,0 +1,93 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import { DiscountType } from '@/components/Informational/types';
+import TzOrderTotalsSummary from './Tz-Order-Totals-Summary.vue';
+import { MobileViewports } from '@/helpers/viewports';
+
+<Meta title="components/Informational/Order Totals Summary" component={TzOrderTotalsSummary} />
+
+export const Template = (args) => ({
+  components: { TzOrderTotalsSummary },
+  setup() {
+    return { args };
+  },
+  template: `<tz-order-totals-summary v-bind="args">{{ args.text }}</tz-order-totals-summary>`,
+  methods: {
+    deliveryOptionChanged: action('deliveryOptionChanged')
+  }
+});
+
+# Order Totals Summary
+
+<Canvas withSource>
+  <Story
+    name="Default"
+    args={{
+      noOfItems: 3,
+      subTotal: 10000,
+      discounts: [
+        {
+          name: 'C2W discount',
+          amount: 1000,
+          type: DiscountType.cycleToWork
+        },
+        {
+          name: 'signup10',
+          amount: 24.99,
+          type: DiscountType.vochure
+        },
+        {
+          name: 'freepump',
+          amount: 19.99,
+          type: DiscountType.freeGift
+        }
+      ],
+      shippingCost: 0,
+      total: 10000
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## No Discounts
+
+<Canvas withSource>
+  <Story
+    name="No Discounts"
+    args={{
+      noOfItems: 1,
+      subTotal: 10000,
+      shippingCost: 0,
+      total: 10000
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Paid Delivery
+
+<Canvas withSource>
+  <Story
+    name="Paid Delivery"
+    args={{
+      noOfItems: 1,
+      subTotal: 19.99,
+      shippingCost: 2.95,
+      total: 22.94
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -1,0 +1,103 @@
+.title-text {
+  font-family: 'googleSansBold';
+  font-size: 24px;
+  background-color: white;
+  color: rgba(0,0,0,0.87);
+}
+.title-icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 3px;
+  margin-right: 10px;
+}
+.roomPlannerTitle {
+  font-family: 'googleSansBold';
+  font-size: 24.86px;
+  margin: 16px 0px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.6);
+}
+.roomPlannerContent {
+  width: 100%;
+  margin: 0px 16px 0px;
+  display: flex;
+  flex-direction: column;
+  .roomPlannerTitle {
+    text-align: center;
+    font-family: 'googleSansBold';
+  }
+}
+
+.specificationContainer {
+  margin-top: 8px;
+}
+.primaryMedia {
+  margin-top: 16px;
+  background-color: white;
+}
+
+@media screen and (max-width: 959px) {
+  .roomPlannerContent {
+    margin: 0px 16px 0px;
+  }
+}
+
+::ng-deep .mat-tab-label-active {
+  opacity: 1 !important;
+}
+
+.flexCenter {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.mediumGutter{
+  margin: 48px;
+  padding: 16px;
+  @media screen and (max-width: 960px) {
+    margin: 16px;
+  }
+}
+
+.smallGutter{
+  margin: 32px 48px;
+  padding: 16px;
+
+  @media screen and (max-width: 960px) {
+    margin: 16px;
+  }
+}
+
+.responsiveBox {
+
+  @media screen and (min-width: 768px) {
+
+  }
+
+  div {
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+      width: 80%;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 50%;
+    }
+  }
+}
+
+.homePageDownloads {
+  background-color: #fafafa;
+  .downloadContent{
+    padding: 20px 0px;
+  }
+}
+
+.hidden {
+  display: none;
+}

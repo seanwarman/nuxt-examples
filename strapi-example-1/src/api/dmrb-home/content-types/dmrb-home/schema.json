@@ -1,0 +1,58 @@
+{
+  "kind": "singleType",
+  "collectionName": "dmrb_homes",
+  "info": {
+    "singularName": "dmrb-home",
+    "pluralName": "dmrb-home-content",
+    "displayName": "DMRB Home",
+    "name": "DMRB Home",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "page_title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "page_subheading": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "body_text": {
+      "type": "richtext"
+    },
+    "discipline_cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.discipline-cards"
+    },
+    "leaderboard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "advert.leaderboard"
+    },
+    "show_leaderboard": {
+      "type": "boolean",
+      "default": true
+    },
+    "notices": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::notices.notices"
+    },
+    "hero_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

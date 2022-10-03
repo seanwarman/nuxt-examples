@@ -1,0 +1,42 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import TzComparisonTool from '@/components/Structural/Tz-Comparison-Tool/Tz-Comparison-Tool.vue';
+import { bikes } from './Tz-Comparison-Tool.data.ts';
+
+<Meta
+  title="components/Structural/Comparison Tool"
+  component={TzComparisonTool}
+  argTypes={{
+    show: {
+      type: { name: 'boolean' }
+    }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzComparisonTool },
+  setup() {
+    return { args };
+  },
+  template: `
+  <tz-comparison-tool v-bind="args" @onViewBike="onViewBike">
+  </tz-comparison-tool>
+  `,
+  methods: {
+    onViewBike: action('onViewBike')
+  }
+});
+
+# Modal
+
+<Story
+  name="Modal"
+  args={{
+    bikesData: bikes,
+    pinnedId: 2
+  }}
+  parameters={{}}
+>
+  {Template.bind({})}
+</Story>

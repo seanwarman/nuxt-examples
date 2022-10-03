@@ -1,0 +1,182 @@
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+  $font-family: 'googleSansRegular'
+);
+
+@include mat-core($custom-typography);
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+@function selected-border-style($borderColor) {
+  @return 2px solid mat-color($borderColor);
+}
+
+@mixin card-link-style($color) {
+  .linkFlex {
+    color: $color !important;
+    transition: color .1s ease-in-out;
+    &:hover {
+      color: darken($color, 10%) !important;
+    }
+  }
+}
+
+.room-layout {
+  color: $light-primary-text;
+  $primary: mat-palette($mat-green);
+  $accent: mat-palette($mat-amber, A400, A100, A700);
+  $warn: mat-palette($mat-red);
+  $room-layout-theme: mat-light-theme($primary, $accent, $warn);
+
+  @include angular-material-theme($room-layout-theme);
+
+  .card-selected {
+    border-left: selected-border-style($primary);
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  .nextArrow{
+    fill: mat-color($primary);
+    color: mat-color($primary) !important;
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  @include card-link-style(mat-color($primary));
+}
+
+.displays-and-extras {
+  $primary: mat-palette($mat-cyan);
+  $accent: mat-palette($mat-cyan, 700);
+
+  $displays-and-extras-theme: mat-light-theme($primary, $accent);
+
+  @include angular-material-theme($displays-and-extras-theme);
+
+  .card-selected {
+    border-left: selected-border-style($primary);
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  @include card-link-style(mat-color($primary));
+}
+
+.camera-and-audio {
+  $primary: mat-palette($mat-red);
+  $camera-and-audio-theme: mat-light-theme($primary, $accent);
+
+  @include angular-material-theme($camera-and-audio-theme);
+
+  .card-selected {
+    border-left: selected-border-style($primary);
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  .nextArrow{
+    fill: mat-color($primary);
+    color: mat-color($primary) !important;
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  @include card-link-style(mat-color($primary));
+}
+
+.furniture-lighting {
+  $primary: mat-palette($mat-orange);
+
+  $furniture-lighting: mat-light-theme($primary, $accent);
+
+  @include angular-material-theme($furniture-lighting);
+
+  .card-selected {
+    border-left: selected-border-style($primary);
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  .nextArrow{
+    fill: mat-color($primary);
+    color: mat-color($primary) !important;
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  @include card-link-style(mat-color($primary));
+}
+
+.acoustics {
+  $primary: mat-palette($mat-blue);
+
+  $acoustics: mat-light-theme($primary, $accent);
+
+  @include angular-material-theme($acoustics);
+
+  .card-selected {
+    border-left: selected-border-style($primary);
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  .nextArrow{
+    fill: mat-color($primary);
+    color: mat-color($primary) !important;
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  @include card-link-style(mat-color($primary));
+}
+
+.services {
+  $primary: mat-palette($mat-deep-purple);
+  $services: mat-light-theme($primary, $accent);
+  @include angular-material-theme($services);
+
+  .card-selected {
+    border-left: selected-border-style($primary);
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  .nextArrow{
+    fill: mat-color($primary);
+    color: mat-color($primary) !important;
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  @include card-link-style(mat-color($primary));
+}
+
+.room-planner {
+  $primary: mat-palette($mat-cyan);
+  $accent: mat-palette($mat-cyan, 700);
+
+  $room-planner: mat-light-theme($primary, $accent);
+
+  @include angular-material-theme($room-planner);
+
+  .card-selected {
+    border-left: selected-border-style($primary);
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+  @include card-link-style(mat-color($primary));
+}

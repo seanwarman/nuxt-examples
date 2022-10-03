@@ -1,0 +1,91 @@
+@import '~@angular/material/theming';
+$sales-button-color:#4285f4;
+
+.sidenav-container {
+  height: 100%;
+}
+
+.toolbarWrapper {
+  .mat-icon-button {
+    margin: 0px 0px 8px 0px;
+  }
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.toolbarWrapper {
+  background-color: white!important;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-tab-link:hover{
+  opacity: .8;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+::ng-deep .toolbarWrapper .mat-tab-nav-bar {
+  border-bottom: none!important;
+}
+
+::ng-deep .toolbarWrapper .mat-ink-bar {
+  display: none!important;
+}
+
+::ng-deep .toolbarWrapper .mat-tab-link {
+min-width: 0px!important;
+}
+
+.headerLogo {
+  margin: 8px 8px 0px 8px;
+  width: 124px;
+  height: auto;
+
+  a:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  a:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+}
+
+.sidenav-content {
+  background-color: white;
+}
+
+.main-contact-sales {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  color: $sales-button-color;
+  border-color: $sales-button-color;
+  background: white;
+  transition: background-color .2s ease-in-out;
+
+  &:hover {
+    background: #4285f4;
+    color: white;
+  }
+}

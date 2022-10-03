@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "dmrb_updates",
+  "info": {
+    "singularName": "dmrb-updates",
+    "pluralName": "dmrb-updates-content",
+    "displayName": "DMRB Updates",
+    "name": "DMRB Updates",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "page_title": {
+      "type": "string",
+      "required": true
+    },
+    "sidebar_panel_snippets": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::snippets.snippets"
+    },
+    "page_subheading": {
+      "type": "text"
+    },
+    "notices": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::notices.notices"
+    }
+  }
+}

@@ -1,0 +1,2 @@
+<img class="roomDesignerSpinner" *ngIf="loading" src="/assets/images/room-planner/room-planner-loading-animation.gif"/>
+<canvas #canvas class="threeCanvas" [ngClass]="this.selectedHotspot === 'loaded' ? '' :'opened'" (click)="trackClick(sectionTitle)"></canvas>

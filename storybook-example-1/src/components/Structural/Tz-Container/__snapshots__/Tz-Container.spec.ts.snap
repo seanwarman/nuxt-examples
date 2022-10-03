@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`Tz-Container.vue setup > renders correctly 1`] = `
+<div
+  class="tz-container container mx-auto min-h-default max-w-medium"
+>
+  
+  Container test for vitest update
+  
+</div>
+`;

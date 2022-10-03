@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`Brand.vue setup > renders correctly 1`] = `
+<img
+  alt="brand"
+  class="tz-brand w-[91px] md:w-[102px]"
+  src="/src/assets/tredz-brand.svg"
+  title="brand"
+/>
+`;

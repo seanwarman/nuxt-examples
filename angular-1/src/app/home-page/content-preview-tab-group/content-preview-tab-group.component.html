@@ -1,0 +1,40 @@
+<mat-tab-group class="content-preview-group" animationDuration="0ms">
+  <mat-tab *ngFor="let tab of tabs">
+    <ng-template mat-tab-label>{{ tab.label }}</ng-template>
+    <ng-template matTabContent>
+      <div
+        class="content-preview-wrapper"
+        fxFlex
+        fxLayout.gt-md="row"
+        fxLayout.lt-md="column"
+      >
+        <div fxFlex="50%" fxFlexOrder.lt-md="1" class="content-preview-image">
+          <img [src]="tab.primaryImage" alt="Image preview" />
+        </div>
+        <div
+          fxFlex.lt-md="0 0 0%"
+          fxFlex.gt-md
+          fxFlexAlign="center"
+          fxFlexOrder.lt-md="0"
+          class="content-preview-body"
+        >
+          <div class="text-content">
+            <img
+              [src]="tab.icon"
+              width="42px"
+              height="auto"
+              alt="Section icon"
+            />
+            <h4 style="font-size: 35px; margin-top:0px">
+              <b>{{ tab.label }}</b>
+            </h4>
+            <p>{{ tab.body }}</p>
+            <button mat-stroked-button [routerLink]="['/', tab.slug]">
+              Get started
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

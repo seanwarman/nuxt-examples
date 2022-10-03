@@ -1,0 +1,50 @@
+<app-layout>
+  <ng-container ngProjectAs="layout-title">
+    <img
+      class="title-icon"
+      [src]="icon"
+    />
+    <span class="title-text">Room Designer</span>
+  </ng-container>
+  <ng-container ngProjectAs="layout-primary-media">
+    <app-three-d-room-planner
+      class="responsiveImage"
+      [ngClass]="{'hidden': planView}"
+      modelPath='/assets/3dModels/roomPlanner/RoomDesignerCubed7.gltf'
+      [specification]="specification"
+      (onModelLoaded)="onModelLoaded()"
+    ></app-three-d-room-planner>
+    <!--
+      (hotspotEvent)="handleEvent($event)"
+    -->
+    <app-primary-media
+      *ngIf="planView"
+      class="primaryMedia"
+      [primaryImageValue]="primaryImageValue"
+      [secondaryImage]="secondaryImage"
+    ></app-primary-media>
+  </ng-container>
+  <ng-container ngProjectAs="layout-content">
+    <div class="roomPlannerContent">
+      <div class="roomPlannerTitle">
+        Design your room
+      </div>
+      <app-management-form
+        [modelLoading]="modelLoading"
+        [specification]="specification"
+        (formChanged)="fetchConfig($event)"
+        (viewChanged)="updateView()"
+      ></app-management-form>
+      <app-specification class="specificationContainer" [data]="specification"></app-specification>
+      <div class="homePageDownloads flexCenter">
+        <div class="downloadContent flexCenter">
+          <img [src]="downloadIcon" />
+          <h4 style="margin-top:8px;">Looking for CAD drawings of these rooms?</h4>
+          <button mat-stroked-button class="heroButton" routerLink="/downloads">
+            View download options
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-layout>

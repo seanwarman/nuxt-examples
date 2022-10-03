@@ -1,0 +1,17 @@
+// Vitest Snapshot v1
+
+exports[`Button setup > renders correctly 1`] = `
+<div
+  data-v-app=""
+>
+  <button
+    class="flex items-center justify-center gap-2 text-sm font-extrabold uppercase tracking-wider focus:ring bg-dark hover:bg-black text-white ring-dark px-8 py-3 rounded-[3px]"
+  >
+    
+    
+    
+    I'm a button
+    
+  </button>
+</div>
+`;

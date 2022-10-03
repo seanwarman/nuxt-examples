@@ -1,0 +1,49 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import TzNavPrimary from './Tz-NavPrimary.vue';
+import { navigation, footerNav } from './Tz-NavPrimary.options';
+
+<Meta
+  title="Components/Navigational/Primary Navigation"
+  component={TzNavPrimary}
+  argTypes={{
+    default: {
+      control: { type: 'number' }
+    }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzNavPrimary },
+  setup() {
+    return { args };
+  },
+  template: `<tz-nav-primary v-bind="args"></tz-nav-primary>`
+});
+
+# Primary Navigation
+
+Top-level primary navigation.
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      menu: navigation,
+      footer: footerNav
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/proto/f9CMMSAWFsKLRUa9xPbpGr/design-system?page-id=60%3A129&node-id=69%3A189&viewport=340%2C48%2C0.47&scaling=min-zoom'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props & slots
+
+<ArgsTable story="Default" />

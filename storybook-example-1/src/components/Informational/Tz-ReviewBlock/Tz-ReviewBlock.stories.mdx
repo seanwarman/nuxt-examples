@@ -1,0 +1,38 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzReviewBlock from './Tz-ReviewBlock.vue'
+import { review } from './Tz-ReviewBlock.data.ts'
+
+<Meta 
+  title="Components/Informational/Review Block"
+  component={ TzReviewBlock }
+  argTypes={{
+  }}
+/>
+
+export const Template = (args) => ({
+    components: { TzReviewBlock },
+    setup() {
+        return { args };
+    },
+    template: `<tz-review-block v-bind="args"></tz-review-block>`
+});
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+        ...review
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=149%3A12502'
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

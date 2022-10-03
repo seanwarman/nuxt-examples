@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import TzJumboCard from './Tz-Jumbo-Card.vue';
+import { exampleJumboCardData } from './Tz-Jumbo-Card.data';
+
+<Meta title="Components/Informational/Jumbo Card" component={TzJumboCard} />
+
+export const Template = (args) => ({
+  components: { TzJumboCard },
+  setup() {
+    return { args };
+  },
+  template: '<div class="container px-0"><tz-jumbo-card v-bind="args" /></div>'
+});
+
+# Jumbo Card
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      cards: exampleJumboCardData
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

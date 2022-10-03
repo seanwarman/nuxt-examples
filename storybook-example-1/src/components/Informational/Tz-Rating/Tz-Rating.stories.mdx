@@ -1,0 +1,50 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzRating from './Tz-Rating.vue';
+
+<Meta
+  title="Components/Informational/Rating"
+  component={TzRating}
+  decorators={[withDesign]}
+  argTypes={{
+    rating: {
+      control: { type: 'radio' },
+      options: ['1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5']
+    },
+    totalReviews: { control: { type: 'text' } },
+    isIndicatorActive: { control: { type: 'boolean' } }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzRating },
+  setup() {
+    return { args };
+  },
+  template: `<tz-rating v-bind="args"></tz-Rating>`
+});
+
+# Rating
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      rating: 4,
+      totalReviews: 45,
+      isIndicatorActive: true
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=1644%3A13692'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

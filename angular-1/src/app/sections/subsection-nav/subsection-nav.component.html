@@ -1,0 +1,18 @@
+<nav mat-tab-nav-bar class="subsectionNav">
+  <a
+    class="subNavLink"
+    mat-tab-link
+    *ngFor="let sub of subsections"
+    [routerLink]="sub.slug"
+    routerLinkActive
+    #rla="routerLinkActive"
+    [active]="rla.isActive === true"
+    [ngClass]="(sub.title =='Introduction')?'introduction':''"
+  >
+    <img *ngIf="sub.icon"
+      src="{{sub.icon}}"
+      [ngClass]="(sub.title =='Introduction')?'sectionIcon':'subNavIcon'"
+    />
+    {{ sub.title == "Introduction" ? sectionName : sub.title }}
+  </a>
+</nav>

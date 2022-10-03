@@ -1,0 +1,40 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import TzAccordion from './Tz-Accordion.vue';
+
+<Meta 
+    title="components/Action/Accordion"
+    component={ TzAccordion }
+    argTypes={{
+        open: { control: 'boolean' }
+    }}
+/>
+
+export const Template = (args) => ({
+    components: { TzAccordion },
+    setup() {
+        return { args };
+    },
+    template: `
+    <tz-accordion v-bind="args"></tz-accordion>
+    `
+});
+
+# Button Drop Down
+
+<Story
+  name="Standard"
+  args={{
+        title: 'Delivery',
+        content: `
+            <p>We estimate that your order will be dispatched 22/04/2022 - 26/04/2022. This is based on the item in your order with the longest dispatch time. If you would like to split your order, please log a request through Live Chat after you have received your order confirmation.</p>
+            <p>Please note: We cannot split orders placed using Paypal Credit.</p>
+            <p>If you place an order 2kg or larger than 30cm x 50cm x 15cm, you can expect to receive your parcel via TNT and will be able to track your delivery.</p>
+        `,
+        buttonAlign: 'top',
+  }}
+  parameters= {{
+  }}>
+  
+  {Template.bind({})}
+</Story>

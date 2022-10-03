@@ -1,0 +1,53 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzGrid from './Tz-Grid.vue';
+import TzRow from '../Tz-Row/Tz-Row.vue';
+import TzCol from '../Tz-Col/Tz-Col.vue';
+
+<Meta title="Structural/Grid" component={TzGrid} decorators={[withDesign]} />
+
+export const Template = (args) => ({
+  components: { TzGrid, TzRow, TzCol },
+  template: `<tz-grid>
+    <tz-row :md="3" :sm="2" :gap="2" align="center">
+        <tz-col span="2">
+            <div class="p-4 rounded-md shadow-lg bg-sky-100">01</div>
+        </tz-col>
+        <tz-col>
+            <div class="p-4 rounded-md shadow-lg bg-sky-100">02</div>
+        </tz-col>
+        <tz-col>
+            <div class="p-4 rounded-md shadow-lg bg-sky-100">03</div>
+        </tz-col>
+        <tz-col span="2">
+            <div class="p-4 rounded-md shadow-lg bg-sky-100">04</div>
+        </tz-col>
+        <tz-col>
+            <div class="p-4 rounded-md shadow-lg bg-sky-100">04</div>
+        </tz-col>
+        <tz-col>
+            <div class="p-4 rounded-md shadow-lg bg-sky-100">04</div>
+        </tz-col>
+    </tz-row>
+  </tz-grid>`
+});
+
+# Brand
+
+Use brand to give your page a logo
+
+<Canvas>
+  <Story
+    name="Default"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=4%3A10791'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

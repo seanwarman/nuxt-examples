@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_snippets_links",
+  "info": {
+    "displayName": "link",
+    "icon": "globe"
+  },
+  "options": {},
+  "attributes": {
+    "link_text": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    },
+    "target_blank": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

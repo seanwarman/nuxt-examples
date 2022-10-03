@@ -1,0 +1,93 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  class="tz-row grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-2"
+  data-v-5d61d963=""
+>
+  
+  
+  <div
+    class="tz-col col-span-1 tz-jumbo-card"
+    data-v-5d61d963=""
+  >
+    
+    <a
+      class="hover:underline focus:underline focus:outline-none"
+      data-v-5d61d963=""
+      href="https://google.com"
+      target="_blank"
+    >
+      
+      <div
+        class="tz-jumbo-card__image-parent mb-[18px] bg-[#F3F3F3]"
+        data-v-5d61d963=""
+      >
+        <span
+          class="tz-jumbo-card__label absolute inset-9 z-20 text-[14px] font-extrabold uppercase tracking-widest"
+          data-v-5d61d963=""
+        >
+          New in
+        </span>
+        <img
+          alt=""
+          class="absolute top-0 bottom-0 right-0 left-0 m-auto block h-[225px] max-w-full mix-blend-multiply lg:h-[430px]"
+          data-v-5d61d963=""
+          src="/Fox-Clothing-Dirtpaw-Long-Finger-MTB-Cycling-Gloves_225074_1_Supersize.jpeg"
+        />
+      </div>
+      <p
+        class="mb-0 text-[16px] text-[#2F2F2F]"
+        data-v-5d61d963=""
+      >
+        Best MTB gloves for spring
+      </p>
+      <!-- supporting product title -->
+      
+    </a>
+    
+  </div>
+  <div
+    class="tz-col col-span-1 tz-jumbo-card"
+    data-v-5d61d963=""
+  >
+    
+    <a
+      class="hover:underline focus:underline focus:outline-none"
+      data-v-5d61d963=""
+      href="https://google.com"
+      target="_blank"
+    >
+      
+      <div
+        class="tz-jumbo-card__image-parent mb-[18px] bg-[#F3F3F3] overflow-hidden"
+        data-v-5d61d963=""
+      >
+        <span
+          class="tz-jumbo-card__label absolute inset-9 z-20 text-[14px] font-extrabold uppercase tracking-widest"
+          data-v-5d61d963=""
+        >
+          New in
+        </span>
+        <img
+          alt=""
+          class="absolute top-0 bottom-0 right-0 left-0 m-auto block h-full w-full"
+          data-v-5d61d963=""
+          src="/coen-van-de-broek-xZR-AMfH878-unsplash-3.jpeg"
+        />
+      </div>
+      <p
+        class="mb-0 text-[16px] text-[#2F2F2F]"
+        data-v-5d61d963=""
+      >
+        Fox Clothing new line 2022
+      </p>
+      <!-- supporting product title -->
+      
+    </a>
+    
+  </div>
+  
+  
+</div>
+`;

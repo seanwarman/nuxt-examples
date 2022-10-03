@@ -1,0 +1,111 @@
+<div class="room-management-form">
+  <div class="toggle-wrapper">
+    <div class="toggle-label">
+      <img
+        src="../../../assets/images/room-planner/icons/roomplanner_toggle.svg"
+        width="24px"
+        height="auto"
+        alt="Section icon"
+      />
+      <div class="toggle-label-text">
+        Plan view
+      </div>
+    </div>
+    <mat-slide-toggle (change)="viewChanged.emit()">
+    </mat-slide-toggle>
+  </div>
+  <mat-divider style="margin-bottom: 24px;"></mat-divider>
+  <span>YOUR ROOM SIZE</span>
+  <mat-slider
+    class="sliderBar room-planner-slider"
+    min="1"
+    max="17"
+    tickInterval="1"
+    color="accent"
+    [thumbLabel]="false"
+    [(value)]="occupancy"
+    [displayWith]="formatLabel"
+    (change)="emitFormChangedEvent('slider')"
+    aria-labelledby="Room length slider"
+    [disabled]="isUpdating || modelLoading"
+  ></mat-slider>
+  <span class="firstFormText" >Number of people: {{ formatLabel(occupancy) }}</span>
+  <mat-divider></mat-divider>
+  <div class="room-planner-control-panel">
+    <span class="small-padding">YOUR ROOM SETUP</span>
+    <div class="small-padding">
+      <mat-chip-list
+        aria-label="Room setup selection"
+        multiple="false"
+      >
+        <mat-chip *ngFor="let roomType of roomTypes"
+          [selected]="roomType.selected"
+          (click)="handleRoomTypeChange(roomType.value)"
+        >
+          {{roomType.name}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+    <span class="small-padding">{{ specification.roomDescription }}</span>
+    <span class="small-padding">These are the kits we’d recommend for your room setup</span>
+    <mat-carousel
+      timings="250ms ease-in"
+      [autoplay]="true"
+      interval="4000"
+      color="accent"
+      maxWidth="auto"
+      proportion="20"
+      slides="5"
+      [loop]="true"
+      [hideArrows]="isNotMultiple()"
+      [hideIndicators]="true"
+      [useKeyboard]="true"
+      [useMouseWheel]="false"
+      orientation="ltr"
+    >
+      <mat-carousel-slide
+        *ngFor=" let primaryhardware of specification.primaryHardware"
+        overlayColor="#ffffff"
+        #carousel
+      >
+        <img style="width:60%;height:auto;margin-bottom:30px" src="{{primaryhardware.image}}" alt="{{primaryhardware.name}}"/>
+          <div class="room-planner-kit-primary-text">
+            {{primaryhardware.name}}
+          </div>
+      </mat-carousel-slide>
+    </mat-carousel>
+  <div class="centered small-padding">
+    <a mat-stroked-button href="https://meetingdevices.withgoogle.com/products/?type=All-in-one,Meeting%20Room%20Kit" target="_blank">Learn more about Google Meeting Hardware</a>
+  </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="room-planner-control-panel" *ngIf="occupancy > 6 || (occupancy > 2 && occupancy < 7 && selectedRoomType === 'conference')">
+    <div class="room-planner-kit-primary-text">
+      OPTIONAL ADD-ONS
+    </div>
+    <div class="room-planner-checkbox-wrapper">
+      <mat-checkbox
+        *ngIf="occupancy > 2"
+        class="room-planner-checkbox"
+        color="primary"
+        [(ngModel)]="selectedJamboard"
+        (change)="emitFormChangedEvent('checkbox')"
+        aria-labelledby="I want a Board 65 checkbox"
+        [disabled]="isUpdating"
+        ><div class="formText">Board 65</div>
+        <div class="infoText">Collaborate in real time <br>with a digital whiteboard</div>
+      </mat-checkbox>
+      <mat-checkbox
+        class="room-planner-checkbox"
+        color="primary"
+        [(ngModel)]="selectedDualScreen"
+        (change)="emitFormChangedEvent('checkbox')"
+        aria-labelledby="I want a dual screen checkbox"
+        [disabled]="isUpdating"
+      ><div class="formText">Dual screen</div>
+        <div class="infoText">Maximise visibility with an <br>additional screen</div>
+      </mat-checkbox>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</div>

@@ -1,0 +1,50 @@
+{
+  "executionRoleArn": "GITVAR_ECS_TASKROLE_ARN",
+  "containerDefinitions": [
+      {
+        "name": "strapi",
+        "image": "GITVAR_IMAGE",
+        "memory": 512,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "GITVAR_ECS_LOGS",
+            "awslogs-region": "eu-west-2",
+            "awslogs-stream-prefix": "ecs"
+          }
+      },
+        "environment" : [
+          { "name" : "HOST", "value" : "0.0.0.0" },
+          { "name" : "DATABASE_CLIENT", "value" : "mysql"},
+          { "name" : "DATABASE_PORT", "value" : "3306"},
+          { "name" : "ADMIN_FIRSTNAME", "value" : "Peter"},
+          { "name" : "ADMIN_SURNAME", "value" : "Stringfella"},
+          { "name" : "ADMIN_USERNAME", "value" : "admin"},
+          { "name" : "ADMIN_PASSWORD", "value" : "password"},
+          { "name" : "ADMIN_EMAIL", "value" : "admin@example.com"},
+          { "name" : "AWS_DEFAULT_REGION", "value": "GITVAR_S3_REGION" },
+          { "name" : "AWS_S3_BUCKET", "value": "GITVAR_S3_BUCKET" }    ,
+          { "name" : "BACKUP_ACCESS_KEY_ID", "value": "GITVAR_BACKUP_ACCESS_KEY_ID" },
+          { "name" : "BACKUP_SECRET_ACCESS_KEY", "value": "GITVAR_BACKUP_SECRET_ACCESS_KEY" },
+          { "name" : "BACKUP_DEFAULT_REGION", "value": "GITVAR_BACKUP_DEFAULT_REGION" },
+          { "name" : "TRIGGER_TOKEN", "value": "GITVAR_TRIGGER_TOKEN" },
+          { "name" : "GITLAB_TAG", "value": "GITVAR_CI_COMMIT_REF_NAME" }
+        ],
+        "secrets": [
+          { "name": "DATABASE_PASSWORD", "valueFrom": "GITVAR_DATABASE_PASSWORD" },
+          { "name": "DATABASE_NAME", "valueFrom": "GITVAR_DATABASE_NAME"},
+          { "name": "DATABASE_HOST", "valueFrom": "GITVAR_DATABASE_HOST"},
+          { "name": "DATABASE_USERNAME", "valueFrom": "GITVAR_DATABASE_USERNAME"},
+          { "name": "AWS_ACCESS_KEY_ID", "valueFrom": "GITVAR_S3_ACCESS_KEY_ID" },
+          { "name": "AWS_SECRET_ACCESS_KEY", "valueFrom": "GITVAR_S3_ACCESS_SECRET" }
+        ],
+        "portMappings": [
+          {
+            "containerPort": 1337,
+            "hostPort": 0
+          }
+        ]
+      }
+  ],
+  "family": "GITVAR_ECS_TASK"
+}

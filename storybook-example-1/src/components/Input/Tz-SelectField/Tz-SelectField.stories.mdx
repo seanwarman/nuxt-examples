@@ -1,0 +1,359 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzSelectField from './Tz-SelectField.vue';
+
+<Meta title="components/Input/Select Field" component={TzSelectField} />
+
+export const Template = (args) => ({
+  components: { TzSelectField },
+  setup() {
+    return { args };
+  },
+  template: `<tz-select-field v-bind='args' />`
+});
+
+# Select Field
+
+<Canvas withSource>
+  <Story
+    name="Default"
+    args={{
+      label: 'Example link',
+      name: 'test',
+      options: [
+        {
+          name: 'option 1 ',
+          value: 1
+        },
+        {
+          name: 'Another option',
+          value: 2
+        },
+        {
+          name: 'The third option is a long one',
+          value: 3
+        },
+        {
+          name: 'Last choice',
+          value: 4
+        }
+      ],
+      value: 1
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+## No value
+
+<Canvas withSource>
+  <Story
+    name="No value"
+    args={{
+      label: 'Example link',
+      name: 'test',
+      options: [
+        {
+          name: 'option 1 ',
+          value: 1
+        },
+        {
+          name: 'Another option',
+          value: 2
+        },
+        {
+          name: 'The third option is a long one',
+          value: 3
+        },
+        {
+          name: 'Last choice',
+          value: 4
+        }
+      ]
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Placeholder
+
+<Canvas withSource>
+  <Story
+    name="Placeholder"
+    args={{
+      name: 'test',
+      label: 'Example link',
+      placeholder: 'Please select...',
+      options: [
+        {
+          name: 'option 1 ',
+          value: 1
+        },
+        {
+          name: 'Another option',
+          value: 2
+        },
+        {
+          name: 'The third option is a long one',
+          value: 3
+        },
+        {
+          name: 'Last choice',
+          value: 4
+        }
+      ]
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With a value
+
+Allows you to select and initial option for the select box.
+
+<Canvas withSource>
+  <Story
+    name="Default state"
+    args={{
+      label: 'Example link',
+      name: 'test',
+      options: [
+        {
+          name: 'option 1 ',
+          value: 1
+        },
+        {
+          name: 'Another option',
+          value: 2
+        },
+        {
+          name: 'The third option is a long one',
+          value: 3
+        },
+        {
+          name: 'Last choice',
+          value: 4
+        }
+      ],
+      value: 2
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Validation Hint
+
+Validation hint can be used to indicate whether a field is optional or required, etc.
+
+<Canvas withSource>
+  <Story
+    name="Validation hint"
+    args={{
+      label: 'Example link',
+      validationHint: 'optional',
+      name: 'test',
+      options: [
+        {
+          name: 'option 1 ',
+          value: 1
+        },
+        {
+          name: 'Another option',
+          value: 2
+        },
+        {
+          name: 'The third option is a long one',
+          value: 3
+        },
+        {
+          name: 'Last choice',
+          value: 4
+        }
+      ]
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Hint
+
+<Canvas withSource>
+  <Story
+    name="With hint"
+    args={{
+      label: 'Example link',
+      name: 'test',
+      options: [
+        {
+          name: 'option 1 ',
+          value: 1
+        },
+        {
+          name: 'Another option',
+          value: 2
+        },
+        {
+          name: 'The third option is a long one',
+          value: 3
+        },
+        {
+          name: 'Last choice',
+          value: 4
+        }
+      ],
+      value: 1,
+      hint: 'This is something helpful about this field'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Multiline Hint
+
+<Canvas withSource>
+  <Story
+    name="Multiline hint"
+    args={{
+      label: 'Example link',
+      name: 'test',
+      options: [
+        {
+          name: 'option 1 ',
+          value: 1
+        },
+        {
+          name: 'Another option',
+          value: 2
+        },
+        {
+          name: 'The third option is a long one',
+          value: 3
+        },
+        {
+          name: 'Last choice',
+          value: 4
+        }
+      ],
+      value: 1,
+      hint: 'This is something helpful about this field\nAnd another line with a bit more'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Invalid State
+
+Setting 'error' to true will display the invalid state
+
+<Canvas withSource>
+  <Story
+    name="Invalid state"
+    args={{
+      label: 'Example link',
+      name: 'test',
+      options: [
+        {
+          name: 'option 1 ',
+          value: 1
+        },
+        {
+          name: 'Another option',
+          value: 2
+        },
+        {
+          name: 'The third option is a long one',
+          value: 3
+        },
+        {
+          name: 'Last choice',
+          value: 4
+        }
+      ],
+      value: 2,
+      error: true
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Invalid with message
+
+Passing a message to 'error' will display the message
+
+<Canvas withSource>
+  <Story
+    name="Invalid with message"
+    args={{
+      label: 'Example link',
+      name: 'test',
+      options: [
+        {
+          name: 'option 1 ',
+          value: 1
+        },
+        {
+          name: 'Another option',
+          value: 2
+        },
+        {
+          name: 'The third option is a long one',
+          value: 3
+        },
+        {
+          name: 'Last choice',
+          value: 4
+        }
+      ],
+      value: 2,
+      error: 'This is an invalid option'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas withSource>
+  <Story
+    name="Disabled"
+    args={{
+      label: 'Example link',
+      name: 'test',
+      options: [
+        {
+          name: 'option 1 ',
+          value: 1
+        },
+        {
+          name: 'Another option',
+          value: 2
+        },
+        {
+          name: 'The third option is a long one',
+          value: 3
+        },
+        {
+          name: 'Last choice',
+          value: 4
+        }
+      ],
+      value: 1,
+      disabled: true
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "dmrb_contact_pages",
+  "info": {
+    "singularName": "dmrb-contact-page",
+    "pluralName": "dmrb-contact-pages",
+    "displayName": "DMRB Contact page",
+    "name": "DMRB Contact Page",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "page_title": {
+      "type": "string",
+      "required": true
+    },
+    "page_subheading": {
+      "type": "text",
+      "required": false
+    },
+    "body_text": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

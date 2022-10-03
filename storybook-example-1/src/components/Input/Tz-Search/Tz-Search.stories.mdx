@@ -1,0 +1,45 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import { withDesign } from 'storybook-addon-designs';
+import { action } from '@storybook/addon-actions';
+import {
+  suggestions,
+  supportResults,
+  fetchedSuggestions,
+  brandDiscExample,
+  collapsedProductCardExample
+} from './Tz-Search.data';
+import { useVueFuse } from 'vue-fuse';
+
+import TzSearch from '@/components/Input/Tz-Search/Tz-Search.vue';
+import TzDisc from '@/components/Informational/Tz-Disc/Tz-Disc.vue';
+
+<Meta title="Components/Input/Search" decorators={[withDesign]} argTypes={{}} component={TzSearch} />
+
+export const Template = (args) => ({
+  components: { TzSearch, TzDisc },
+  setup() {
+    return { args };
+  },
+  template: `<tz-search v-bind="args"></tz-search>`
+});
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      support: supportResults,
+      suggestions,
+      fetchedSuggestions,
+      topBrands: brandDiscExample,
+      products: [...collapsedProductCardExample]
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=149%3A12502'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

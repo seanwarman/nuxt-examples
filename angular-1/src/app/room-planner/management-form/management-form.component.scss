@@ -1,0 +1,160 @@
+.room-management-form {
+  margin: 0px 0px 16px;
+  font-size: 14px;
+  color: rgba(0,0,0,0.60);
+  letter-spacing: 0.24px;
+  text-align: left;
+  line-height: 20px;
+  span {
+    display: block;
+  }
+}
+
+::ng-deep .room-planner .mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
+    border-color: transparent !important;
+    background-color: #129EAF !important;
+}
+
+
+
+::ng-deep .room-planner .mat-accent .mat-slider-track-fill{
+  background-color: #007B83;
+}
+
+::ng-deep .room-planner .mat-slider-track-background{
+      background-color: rgba(0, 123, 131, 0.26);
+}
+
+::ng-deep .room-planner .cdk-focused .mat-slider-track-background{
+      background-color: rgba(0, 123, 131, 0.26);
+}
+
+::ng-deep .room-planner .mat-slider:hover .mat-slider-track-background{
+      background-color: rgba(0, 123, 131, 0.26);
+}
+::ng-deep .room-planner .mat-expansion-panel {
+    box-shadow: none!important;
+}
+
+::ng-deep .room-planner .mat-expansion-panel-header-title {
+  color: #129eaf!important;
+}
+::ng-deep .room-planner .mat-expansion-indicator::after {
+  color: #129eaf!important;
+}
+
+::ng-deep .room-planner .mat-expansion-panel-header {
+  padding: 0;
+  min-height: 48px !important;
+  .mat-content {
+    margin-left: auto;
+    flex: unset;
+  }
+  .mat-expansion-indicator{
+  margin-right: auto;
+  }
+}
+
+::ng-deep .room-planner .mat-checkbox-inner-container {
+  margin: 6px 4px;
+}
+
+::ng-deep .room-planner .mat-checkbox-frame {
+  border-color: #129eaf;
+}
+
+.sliderBar{
+  width: 100%;
+  padding: 0px !important;
+}
+.checkbox{
+  padding: 16px 0px 16px;
+}
+.formText{
+  padding: 15px 0px 6px 0;
+}
+.infoText{
+  width: 100%;
+  font-size: 12px;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+}
+.firstFormText{
+  padding: 2px 0px 15px;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+.small-padding{
+  padding: 8px 0;
+}
+.room-planner-control-panel {
+  padding: 20px 0;
+}
+
+.toggle-wrapper {
+  padding: 14px 20px;
+  display: flex;
+  justify-content: center;
+  .toggle-label {
+    display: flex;
+    margin: 0 24px 0 0;
+    .toggle-label-text {
+      padding-top: 2px;
+      margin: 0 0 0 8px;
+    }
+  }
+}
+
+::ng-deep .carousel-slide .carousel-slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  .room-planner-kit-primary-text{
+    margin-top: -19px;
+    @media screen and (max-width: 768px) {
+      margin-top: -3px;
+    }
+  }
+}
+
+::ng-deep .carousel {
+  height:206px!important;
+  @media screen and (max-width: 768px) {
+    height:140px!important;
+  }
+}
+
+
+.room-planner-kit-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 20%;
+  .room-planner-kit-primary-text {
+  }
+}
+
+.room-planner-kit-secondary-wrapper {
+  display: flex;
+  padding: 8px;
+  .room-planner-kit-secondary {
+    flex: 1;
+    .room-planner-kit-primary-text{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}
+.room-planner-checkbox-wrapper {
+  display: flex;
+  flex-direction: row;
+  .room-planner-checkbox {
+    display: flex;
+    flex: 1;
+  }
+}

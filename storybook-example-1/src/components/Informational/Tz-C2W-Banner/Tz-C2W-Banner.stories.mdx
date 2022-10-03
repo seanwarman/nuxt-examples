@@ -1,0 +1,61 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import TzC2WBanner from './Tz-C2W-Banner.vue';
+
+<Meta
+  title="components/Informational/C2W Banner"
+  component={TzC2WBanner}
+  argTypes={{
+    isResponsive: {
+      type: { name: 'boolean' }
+    }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzC2WBanner },
+  setup() {
+    return { args };
+  },
+  template: '<TzC2WBanner v-bind="args"/>'
+});
+
+# C2W Banner
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      bannerImage: {
+        src: '/lifestyle.jpeg',
+        alt: 'lifestyle Image'
+      },
+      isResponsive: true
+    }}
+    parameters={{
+      // Set the viewports in Chromatic at a component level.
+      chromatic: { viewports: [768, 1024, 1300, 1500] }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+## Not Responsive
+
+<Canvas withSource="open">
+  <Story
+    name="Not Responsive"
+    args={{
+      bannerImage: {
+        src: '/lifestyle.jpeg',
+        alt: 'lifestyle Image'
+      },
+      isResponsive: false
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -1,0 +1,95 @@
+a:link.titleLink {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+a:visited.titleLink {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-family: googleSansBold;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.primaryMedia {
+  margin-top: 16px;
+}
+
+.subsectionNav {
+  width: auto;
+}
+
+.sectionTitleWrapper {
+  width: 100%;
+  margin-bottom: 10px;
+  align-items: center;
+  display: inline-flex;
+}
+
+.sectionTitleIcon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 3px;
+  margin-right: 10px;
+}
+
+.subsectionContent {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  justify-content: center;
+  height: 100%;
+}
+
+.sectionTile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  margin-left: 16px;
+  align-content: flex-start;
+  width: inherit;
+}
+.sectionWrapper {
+  height: calc(100vh - 56px);
+}
+.subsectionTile {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin-right: 10px;
+  align-content: flex-start;
+}
+
+.mobileSubNav {
+  width: 100%;
+}
+
+.primaryMedia {
+  padding: 2em;
+}
+
+@media screen and (max-width: 959px) {
+  .sectionTitleWrapper {
+    border-bottom: none;
+  }
+  .primaryMedia {
+    margin-top: 0px;
+  }
+  .sectionTitle {
+    display: none;
+  }
+}

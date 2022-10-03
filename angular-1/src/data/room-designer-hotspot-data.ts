@@ -1,0 +1,120 @@
+export const HotspotData: Array<{
+  name: string;
+  text: string;
+  color: string;
+  defaultIcon: string;
+  interimIcon: string;
+  activeIcon: string;
+  halo: string;
+  x: number;
+  y: number;
+  z: number;
+  camX: number;
+  camY: number;
+  camZ: number;
+}> = [
+  {
+    name: 'room-layout',
+    text: 'Room Layout',
+    color: '#31a750',
+    defaultIcon: 'icon-hotspot-room-layout-green-01-default@3x.png',
+    interimIcon: 'icon-hotspot-room-layout-green-01-interim@3x.png',
+    activeIcon: 'icon-hotspot-room-layout-green-01-active@3x.png',
+    halo: 'icon-hotspot-room-layout-green-01-active-halo@3x.png',
+    x: -110,
+    y: 20,
+    z: 100,
+    camX: -800,
+    camY: 800,
+    camZ: 800,
+  },
+  {
+    name: 'camera-and-audio',
+    text: 'Camera & Audio',
+    color: '#e94233',
+    defaultIcon: 'icon-hotspot-camera-audio-red-01-default@3x.png',
+    interimIcon: 'icon-hotspot-camera-audio-red-01-interim@3x.png',
+    activeIcon: 'icon-hotspot-camera-audio-red-01-active@3x.png',
+    halo: 'icon-hotspot-camera-audio-red-01-active-halo@3x.png',
+    x: -10,
+    y: 90,
+    z: 0,
+    camX: -800,
+    camY: 250,
+    camZ: 300,
+  },
+  {
+    name: 'displays-and-extras',
+    text: 'Displays & Extras',
+    color: '#0d9cab',
+    defaultIcon: 'icon-hotspot-displays-extras-teal-01-default@3x.png',
+    interimIcon: 'icon-hotspot-displays-extras-teal-01-interim@3x.png',
+    activeIcon: 'icon-hotspot-displays-extras-teal-01-active@3x.png',
+    halo: 'icon-hotspot-room-designer-teal-01-active-halo@3x.png',
+    x: 0,
+    y: 110,
+    z: -160,
+    camX: -1200,
+    camY: 500,
+    camZ: 600,
+  },
+  {
+    name: 'services',
+    text: 'Services',
+    color: '#681da7',
+    defaultIcon: 'icon-hotspot-services-purple-01-default@3x.png',
+    interimIcon: 'icon-hotspot-services-purple-01-interim@3x.png',
+    activeIcon: 'icon-hotspot-services-purple-01-active@3x.png',
+    halo: 'icon-hotspot-services-purple-01-active-halo@3x.png',
+    x: 120,
+    y: 200,
+    z: -160,
+    camX: -120,
+    camY: 250,
+    camZ: 300,
+  },
+  {
+    name: 'furniture-lighting',
+    text: 'Furniture & Lighting',
+    color: '#fbbc05',
+    defaultIcon: 'icon-hotspot-furniture-lighting-yellow-01-default@3x.png',
+    interimIcon: 'icon-hotspot-furniture-lighting-yellow-01-interim@3x.png',
+    activeIcon: 'icon-hotspot-furniture-lighting-yellow-01-active@3x.png',
+    halo: 'icon-hotspot-furniture-lighting-yellow-01-active-halo@3x.png',
+    x: -70,
+    y: 265,
+    z: 20,
+    camX: -120,
+    camY: 300,
+    camZ: 400,
+  },
+  {
+    name: 'acoustics',
+    text: 'Acoustics',
+    color: '#3d85f2',
+    defaultIcon: 'icon-hotspot-acoustics-blue-01-default@3x.png',
+    interimIcon: 'icon-hotspot-acoustics-blue-01-interim@3x.png',
+    activeIcon: 'icon-hotspot-acoustics-blue-01-active@3x.png',
+    halo: 'icon-hotspot-acoustics-blue-01-active-halo@3x.png',
+    x: -210,
+    y: 190,
+    z: -160,
+    camX: -120,
+    camY: 220,
+    camZ: 580,
+  },
+  // {
+  //   name: 'room-planner',
+  //   text: 'Room Planner',
+  //   color: '#0d9cab',
+  //   defaultIcon: 'icon-hotspot-teal-01@3x.png',
+  //   activeIcon: 'icon-room-designer-white-teal-circle-01@3x.png',
+  //   halo: 'teal.png',
+  //   x: -10,
+  //   y: 150,
+  //   z: -160,
+  //   camX: 0,
+  //   camY: 200,
+  //   camZ: 200,
+  // },
+];

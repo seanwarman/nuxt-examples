@@ -1,0 +1,41 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+import { iPhoneX, iPadLandscape, DesktopSmall, DesktopLarge } from '@/helpers/viewports';
+
+import TzCheckoutCta from './Tz-Checkout-Cta.vue';
+import { exampleData } from './Tz-Checkout-Cta.data';
+
+<Meta title="Components/Action/Checkout CTA" component={TzCheckoutCta} decorators={[withDesign]} />
+
+export const Template = (args) => ({
+  components: { TzCheckoutCta },
+  setup() {
+    return { args };
+  },
+  template: `<tz-checkout-cta v-bind="args"></tz-checkout-cta>`
+});
+
+# Checkout CTA
+
+The Check out / finance CTA is a two key buttons to help the user decide if they buy now or go down a finance route
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      paymentProviders: exampleData
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: ''
+      },
+      chromatic: { viewports: [iPhoneX, iPadLandscape, DesktopSmall, DesktopLarge] }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

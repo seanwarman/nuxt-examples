@@ -1,0 +1,52 @@
+.responsiveImage{
+  width: 100%;
+  object-fit: cover;
+}
+.primaryMedia{
+  background-color: white;
+  padding-right: 16px;
+  object-fit: cover;
+  position: relative;
+  height: 100%;
+}
+
+.primaryToggle{
+  position: absolute;
+  top: 35px;
+  right: 15px;
+  background-color: #FFFFFF;
+  padding: 8px 16px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  box-shadow: -2px 2px 3px -1px #3c4043;
+}
+
+.toggleLabel{
+  display: inline;
+  font-size: 14px;
+  color: rgba(0,0,0,0.60);
+}
+.slideToggle{
+  padding: 0px 8px;
+}
+//TODO : remove once QA'ed by designers
+.toggleIcon{
+  display: none;
+}
+
+@media screen and (max-width: 959px) {
+  .primaryToggle{
+    right: 0px;
+  }
+  .toggleLabel{
+    display: inline !important;
+  }
+  //TODO : remove once QA'ed by designers
+  .toggleIcon{
+    display: none !important;
+  }
+  .primaryMedia{
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}

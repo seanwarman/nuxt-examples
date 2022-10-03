@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import TzVideoContent from '@/components/Informational/Tz-VideoContent/Tz-VideoContent.vue';
+import { videoData } from './Tz-VideoContent.data.ts';
+
+<Meta title="components/Informational/Video content" component={TzVideoContent} />
+
+export const Template = (args) => ({
+  components: { TzVideoContent },
+  setup() {
+    return { args };
+  },
+  template: `<tz-video-content v-bind="args"></tz-video-content>`
+});
+
+# Video box
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      ...videoData
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

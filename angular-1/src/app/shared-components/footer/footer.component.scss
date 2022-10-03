@@ -1,0 +1,82 @@
+footer {
+  .charcoalLogo {
+    float: right;
+  }
+  .footerNavLinks {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .mat-list-item-content {
+    padding-left: none !important;
+  }
+
+  .bottom-links {
+    float: right;
+    font-size: 12px;
+    a {
+      display: inline-block;
+      padding: 25px 27px 0 0;
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.38);
+    }
+  }
+
+  margin-bottom: 50px;
+
+  .hidden {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+}
+
+.clearfix {
+  height: 29px;
+  overflow: hidden;
+}
+
+.fullWidth {
+  margin: 24px 24px 24px 24px;
+}
+
+@media screen and (min-width: 900px) {
+  .fullWidth {
+    margin: 72px 10%;
+
+    .innerFooter {
+      display: flex;
+      justify-content: space-between;
+
+      .charcoalLogo {
+        float: none;
+      }
+
+      .googleLogo {
+        padding-bottom: 40px;
+      }
+
+      .clearfix {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding: 32px 0px 32px;
+      }
+
+      .footerNavList {
+        display: flex;
+        width: 443px;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        .mat-list-item {
+          width: 220px;
+          align-self: flex-end;
+        }
+      }
+    }
+  }
+}

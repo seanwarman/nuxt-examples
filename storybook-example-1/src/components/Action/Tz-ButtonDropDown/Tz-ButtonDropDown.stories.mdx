@@ -1,0 +1,122 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+
+import TzButtonDropDown from './Tz-ButtonDropDown.vue';
+import TzLozenge from '@/components/Informational/Tz-Lozenge/Tz-Lozenge.vue';
+
+import TzC2wVoucherForm from '@/components/Input/Form/Tz-C2wVoucherForm/Tz-C2wVoucherForm.vue';
+import TzGiftVoucherForm from '@/components/Input/Form/Tz-GiftVoucherForm/Tz-GiftVoucherForm.vue';
+
+<Meta
+  title="components/Action/Button Drop Down"
+  component={(TzButtonDropDown, TzLozenge)}
+  argTypes={{
+    open: { control: 'boolean' }
+  }}
+/>
+
+export const ExampleTemplate = (args) => ({
+  components: { TzButtonDropDown, TzLozenge },
+  setup() {
+    return { args };
+  },
+  template: `
+    <tz-button-drop-down v-bind="args">
+        <template #heading>
+            <span class="font-semibold text-sm">Add <tz-lozenge color="orange" :radius="2">CYCLE TO WORK</tz-lozenge> or Cyclescheme voucher</span>
+        </template>
+        <template #body>
+            <div class="relative rounded-xl overflow-auto bg-light-grey">
+            <div class="grid grid-cols-3 gap-4 font-mono text-white text-sm text-center font-bold leading-6">
+                <div class="p-4 rounded-lg bg-sky-100 dark:bg-sky-800 dark:text-sky-400">01</div>
+                <div class="p-4 rounded-lg bg-sky-400 dark:bg-sky-800 dark:text-sky-400">02</div>
+                <div class="p-4 rounded-lg bg-amber-400 dark:bg-sky-800 dark:text-sky-400">03</div>
+                <div class="p-4 rounded-lg shadow-lg bg-sky-500 col-span-2">04</div>
+                <div class="p-4 rounded-lg bg-black-300 dark:bg-sky-800 dark:text-sky-400">05</div>
+                <div class="p-4 rounded-lg bg-sky-300 dark:bg-sky-800 dark:text-sky-400">06</div>
+                <div class="p-4 rounded-lg shadow-lg bg-dark-fade col-span-2">07</div>
+            </div>
+            </div>
+        </template>
+    </tz-button-drop-down>
+    `
+});
+
+export const C2wDropDown = (args) => ({
+  components: { TzButtonDropDown, TzLozenge, TzC2wVoucherForm },
+  setup() {
+    return { args };
+  },
+  template: `
+    <tz-button-drop-down v-bind="args">
+        <template #heading>
+            <span class="font-semibold text-sm">Add <tz-lozenge color="orange" :radius="2">CYCLE TO WORK</tz-lozenge> or Cyclescheme voucher</span>
+        </template>
+        <template #body>
+            <TzC2wVoucherForm :class="['my-4']" />
+        </template>
+    </tz-button-drop-down>
+    `
+});
+
+export const GiftDropDown = (args) => ({
+  components: { TzButtonDropDown, TzGiftVoucherForm },
+  setup() {
+    return { args };
+  },
+  template: `
+    <tz-button-drop-down v-bind="args">
+        <template #heading>
+            <span class="font-semibold text-sm">Add a discount code or gift voucher</span>
+        </template>
+        <template #body>
+            <TzGiftVoucherForm />
+        </template>
+    </tz-button-drop-down>
+    `
+});
+
+# Button Drop Down
+
+This component acts as an accordion with a title which always displays and body content which is hidden or displayed by a user click.
+
+## Example
+
+<Canvas withSource="open">
+  <Story name="Closed" args={{}} parameters={{}}>
+    {ExampleTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Closed" />
+
+## Opened
+
+Set the dropdown to be opened initially by using the `open: true` flag.
+
+<Canvas>
+  <Story
+    name="Opened"
+    args={{
+      open: true
+    }}
+    parameters={{}}
+  >
+    {ExampleTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Cycle to Work
+
+<Canvas>
+  <Story name="Cycle to work Voucher" args={{}} parameters={{}}>
+    {C2wDropDown.bind({})}
+  </Story>
+</Canvas>
+
+## Gift Vochure
+
+<Canvas>
+  <Story name="Gift Voucher" args={{}} parameters={{}}>
+    {GiftDropDown.bind({})}
+  </Story>
+</Canvas>

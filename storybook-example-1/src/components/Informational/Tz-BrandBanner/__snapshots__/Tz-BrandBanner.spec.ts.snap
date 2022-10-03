@@ -1,0 +1,258 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  class="brand-banner p-5 xl:container xl:px-5 xl:py-0"
+  data-v-45b5b137=""
+>
+  <div
+    class="tz-row grid auto-cols-max grid-flow-col gap-14 overflow-x-auto"
+    data-v-45b5b137=""
+  >
+    
+    
+    <div
+      class="tz-col col-span-1"
+      data-v-45b5b137=""
+    >
+      
+      <div
+        class="brand flex h-16 w-24 content-center justify-center"
+        data-v-45b5b137=""
+      >
+        <a
+          class="m-auto"
+          data-v-45b5b137=""
+          href="/brand/altura"
+        >
+          <img
+            alt="Altura"
+            class="object-fit hover:scale-100 scale-90 transition duration-300"
+            data-v-45b5b137=""
+            src="/brands/altura_logo.png"
+          />
+        </a>
+      </div>
+      
+    </div>
+    <div
+      class="tz-col col-span-1"
+      data-v-45b5b137=""
+    >
+      
+      <div
+        class="brand flex h-16 w-24 content-center justify-center"
+        data-v-45b5b137=""
+      >
+        <a
+          class="m-auto"
+          data-v-45b5b137=""
+          href="/brand/boardman"
+        >
+          <img
+            alt="Boardman"
+            class="object-fit hover:scale-100 scale-90 transition duration-300"
+            data-v-45b5b137=""
+            src="/brands/boardman_logo.png"
+          />
+        </a>
+      </div>
+      
+    </div>
+    <div
+      class="tz-col col-span-1"
+      data-v-45b5b137=""
+    >
+      
+      <div
+        class="brand flex h-16 w-24 content-center justify-center"
+        data-v-45b5b137=""
+      >
+        <a
+          class="m-auto"
+          data-v-45b5b137=""
+          href="/brand/cannondale"
+        >
+          <img
+            alt="Cannondale"
+            class="object-fit hover:scale-100 scale-90 transition duration-300"
+            data-v-45b5b137=""
+            src="/brands/cannondale_logo.png"
+          />
+        </a>
+      </div>
+      
+    </div>
+    <div
+      class="tz-col col-span-1"
+      data-v-45b5b137=""
+    >
+      
+      <div
+        class="brand flex h-16 w-24 content-center justify-center"
+        data-v-45b5b137=""
+      >
+        <a
+          class="m-auto"
+          data-v-45b5b137=""
+          href="/brand/cube"
+        >
+          <img
+            alt="Cube"
+            class="object-fit hover:scale-100 scale-90 transition duration-300"
+            data-v-45b5b137=""
+            src="/brands/cube_logo.png"
+          />
+        </a>
+      </div>
+      
+    </div>
+    <div
+      class="tz-col col-span-1"
+      data-v-45b5b137=""
+    >
+      
+      <div
+        class="brand flex h-16 w-24 content-center justify-center"
+        data-v-45b5b137=""
+      >
+        <a
+          class="m-auto"
+          data-v-45b5b137=""
+          href="/brand/endura"
+        >
+          <img
+            alt="Endura"
+            class="object-fit hover:scale-100 scale-90 transition duration-300"
+            data-v-45b5b137=""
+            src="/brands/endura_logo.png"
+          />
+        </a>
+      </div>
+      
+    </div>
+    <div
+      class="tz-col col-span-1"
+      data-v-45b5b137=""
+    >
+      
+      <div
+        class="brand flex h-16 w-24 content-center justify-center"
+        data-v-45b5b137=""
+      >
+        <a
+          class="m-auto"
+          data-v-45b5b137=""
+          href="/brand/giant"
+        >
+          <img
+            alt="Giant"
+            class="object-fit hover:scale-100 scale-90 transition duration-300"
+            data-v-45b5b137=""
+            src="/brands/giant_logo.png"
+          />
+        </a>
+      </div>
+      
+    </div>
+    <div
+      class="tz-col col-span-1"
+      data-v-45b5b137=""
+    >
+      
+      <div
+        class="brand flex h-16 w-24 content-center justify-center"
+        data-v-45b5b137=""
+      >
+        <a
+          class="m-auto"
+          data-v-45b5b137=""
+          href="/brand/cube"
+        >
+          <img
+            alt="Cube"
+            class="object-fit hover:scale-100 scale-90 transition duration-300"
+            data-v-45b5b137=""
+            src="/brands/cube_logo.png"
+          />
+        </a>
+      </div>
+      
+    </div>
+    <div
+      class="tz-col col-span-1"
+      data-v-45b5b137=""
+    >
+      
+      <div
+        class="brand flex h-16 w-24 content-center justify-center"
+        data-v-45b5b137=""
+      >
+        <a
+          class="m-auto"
+          data-v-45b5b137=""
+          href="/brand/endura"
+        >
+          <img
+            alt="Endura"
+            class="object-fit hover:scale-100 scale-90 transition duration-300"
+            data-v-45b5b137=""
+            src="/brands/endura_logo.png"
+          />
+        </a>
+      </div>
+      
+    </div>
+    <div
+      class="tz-col col-span-1"
+      data-v-45b5b137=""
+    >
+      
+      <div
+        class="brand flex h-16 w-24 content-center justify-center"
+        data-v-45b5b137=""
+      >
+        <a
+          class="m-auto"
+          data-v-45b5b137=""
+          href="/brand/giant"
+        >
+          <img
+            alt="Giant"
+            class="object-fit hover:scale-100 scale-90 transition duration-300"
+            data-v-45b5b137=""
+            src="/brands/giant_logo.png"
+          />
+        </a>
+      </div>
+      
+    </div>
+    <div
+      class="tz-col col-span-1"
+      data-v-45b5b137=""
+    >
+      
+      <div
+        class="brand flex h-16 w-24 content-center justify-center"
+        data-v-45b5b137=""
+      >
+        <a
+          class="m-auto"
+          data-v-45b5b137=""
+          href="/brand/merida"
+        >
+          <img
+            alt="Merida"
+            class="object-fit hover:scale-100 scale-90 transition duration-300"
+            data-v-45b5b137=""
+            src="/brands/merida_logo.png"
+          />
+        </a>
+      </div>
+      
+    </div>
+    
+    
+  </div>
+</div>
+`;

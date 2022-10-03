@@ -1,0 +1,210 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzInputField from './Tz-InputField.vue';
+
+<Meta title="components/Input/Input field" component={TzInputField} />
+
+export const Template = (args) => ({
+  components: { TzInputField },
+  setup() {
+    return { args };
+  },
+  template: '<tz-input-field v-bind="args" />'
+});
+
+# Input Field
+
+<Canvas withSource>
+  <Story
+    name="Default"
+    args={{
+      name: 'default',
+      type: 'text',
+      autocomplete: 'off',
+      value: ''
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Label
+
+<Canvas withSource>
+  <Story
+    name="Label"
+    args={{
+      name: 'label',
+      label: 'First Name',
+      type: 'text',
+      autocomplete: 'off',
+      value: ''
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Placeholder
+
+<Canvas withSource>
+  <Story
+    name="Placeholder"
+    args={{
+      name: 'placeholder',
+      label: 'First Name',
+      type: 'text',
+      placeholder: 'Jane',
+      autocomplete: 'off',
+      value: ''
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Validation Hint
+
+Validation hint can be used to indicate whether a field is optional or required, etc.
+
+<Canvas withSource>
+  <Story
+    name="Validation Hint"
+    args={{
+      name: 'optional',
+      label: 'Full name',
+      validationHint: 'optional',
+      type: 'text',
+      placeholder: 'Jane Doe',
+      value: ''
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Hint
+
+<Canvas withSource>
+  <Story
+    name="Text with hint"
+    args={{
+      name: 'with-hint',
+      label: 'Full name',
+      type: 'text',
+      placeholder: 'Jane Doe',
+      hint: 'We will only use your details to contact you about your order',
+      value: ''
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Multiline Hint
+
+<Canvas withSource>
+  <Story
+    name="Text with multiline hint"
+    args={{
+      name: 'with-hint',
+      label: 'Full name',
+      type: 'text',
+      placeholder: 'Jane Doe',
+      hint: 'We will only use your details to contact you about your order\nAnother line of text',
+      value: ''
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Value
+
+<Canvas withSource>
+  <Story
+    name="With a value"
+    args={{
+      name: 'with-value',
+      label: 'Full name',
+      type: 'text',
+      placeholder: 'Mark Cavendish',
+      hint: 'We will only use your details to contact you about your order',
+      value: 'Mark Cavendish'
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Invalid State
+
+Setting 'error' to true will display the invalid state
+
+<Canvas withSource>
+  <Story
+    name="Invalid state"
+    args={{
+      name: 'invalid',
+      label: 'Full name',
+      type: 'text',
+      placeholder: 'Mark Cavendish',
+      hint: 'We will only use your details to contact you about your order',
+      error: true
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Invalid with message
+
+Passing a message to 'error' will display the message
+
+<Canvas withSource>
+  <Story
+    name="Invalid with message"
+    args={{
+      name: 'invalid',
+      label: 'Full name',
+      type: 'text',
+      placeholder: 'Mark Cavendish',
+      hint: 'We will only use your details to contact you about your order',
+      error: 'Full name is required'
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Number type
+
+This will show the numeric soft keyboard or number stepper and restrict entry to numbers only.
+
+<Canvas withSource>
+  <Story
+    name="Numeric field"
+    args={{
+      name: 'number',
+      label: 'Age',
+      type: 'number',
+      placeholder: '25',
+      autocomplete: 'off',
+      value: ''
+    }}
+    parameters={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

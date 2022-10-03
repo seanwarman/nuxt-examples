@@ -1,0 +1,62 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="false"
+    [ngClass]="{ hidden: isDesktop | async }"
+    [attr.role]="!(isDesktop | async) ? 'dialog' : 'navigation'"
+    [mode]="!(isDesktop | async) ? 'over' : 'side'"
+    [opened]="isDesktop | async"
+    (click)="drawer.toggle()"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        *ngFor="let link of navLinks"
+        [routerLink]="link.slug"
+        >{{ link.title }}</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar
+      class="toolbarWrapper"
+      color="white"
+      >
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="!(isDesktop | async)"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <a routerLink="/"><img class="headerLogo" alt="Google Cloud Logo link to homepage" [src]="headerLogo"/></a>
+      <nav mat-tab-nav-bar [ngClass]="{ hidden: !(isDesktop | async) }">
+        <a
+          class="main-section-link"
+          mat-tab-link
+          *ngFor="let link of navLinks"
+          [routerLink]="link.slug"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [active]="rla.isActive"
+          disableRipple="true"
+        >
+          {{ link.title }}
+        </a>
+      </nav>
+      <span class="spacer"></span>
+      <a
+      class="main-contact-sales"
+      mat-stroked-button
+      (click)="trackInteraction()"
+      >Contact sales</a>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content fixedInViewport="false"></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

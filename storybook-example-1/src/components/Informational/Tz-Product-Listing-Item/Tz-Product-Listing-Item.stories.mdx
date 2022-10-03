@@ -1,0 +1,60 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import TzProductListItem from './Tz-Product-Listing-Item.vue';
+
+<Meta title="Components/Informational/Product List Item" component={TzProductListItem} />
+
+export const Template = (args) => ({
+  components: { TzProductListItem },
+  setup() {
+    return { args };
+  },
+  template: '<tz-product-list-item v-bind="args" />'
+});
+
+# ProductListCard
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      products: [
+        {
+          content: {
+            image: {
+              src: '/src/assets/roadbike.jpg',
+              alt: 'Cannondale Brand'
+            },
+            link: {
+              url: 'https://google.com',
+              target: '_self'
+            },
+            name: 'Mountain bikes'
+          }
+        },
+        {
+          content: {
+            image: {
+              src: '/src/assets/roadbike.jpg',
+              alt: 'Giant Brand'
+            },
+            name: 'Road bikes'
+          }
+        },
+        {
+          content: {
+            image: {
+              src: '/src/assets/roadbike.jpg',
+              alt: 'Specialized Brand'
+            },
+            name: 'Hybrid bikes'
+          }
+        }
+      ]
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

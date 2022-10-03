@@ -1,0 +1,50 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+
+- url: /(.*\.(scss|css))
+  mime_type: text/css
+  static_files: dist/charcoal-blue/\1
+  upload: dist/charcoal-blue/(.*\.(scss|css))
+
+- url: /(.*\.js)
+  mime_type: text/javascript
+  static_files: dist/charcoal-blue/\1
+  upload: dist/charcoal-blue/(.*\.js)
+
+- url: /(.*\.json)
+  mime_type: application/json
+  static_files: dist/charcoal-blue/\1
+  upload: dist/charcoal-blue/(.*\.json)
+
+- url: /(.*\.gltf)
+  mime_type: model/gltf+json
+  static_files: dist/charcoal-blue/\1
+  upload: dist/charcoal-blue/assets/(.*\.gltf)
+
+- url: /(.*\.bin)
+  mime_type: model/gltf-binary
+  static_files: dist/charcoal-blue/\1
+  upload: dist/charcoal-blue/assets/(.*\.bin)
+
+- url: /(.*\.ttf)
+  static_files: dist/charcoal-blue/\1
+  upload: dist/charcoal-blue/assets/(.*\.ttf)
+
+- url: /(.*\.(jpg|png|gif))
+  static_files: dist/charcoal-blue/\1
+  upload: dist/charcoal-blue/assets/(.*\.(jpg|png|gif))
+
+- url: /(.*\.svg)
+  mime_type: image/svg+xml
+  static_files: dist/charcoal-blue/\1
+  upload: dist/charcoal-blue/assets/(.*\.svg)
+
+- url: /.*
+  static_files: dist/charcoal-blue/index.html
+  upload: dist/charcoal-blue/index.html
+
+- url: /
+  static_files: dist/charcoal-blue/index.html
+  upload: dist/charcoal-blue/index.html

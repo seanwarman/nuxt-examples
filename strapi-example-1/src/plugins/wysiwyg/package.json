@@ -1,0 +1,25 @@
+{
+  "name": "wysiwyg",
+  "version": "0.0.0",
+  "description": "Makes Strapi use CKEditor for an improved user experience when dding content",
+  "strapi": {
+    "name": "wysiwyg",
+    "description": "Replaces the default Strapi editor with the beautiful CKEditor",
+    "kind": "plugin",
+    "displayName": "Nomensa | CKEditor Wysiwyg"
+  },
+  "dependencies": {},
+  "author": {
+    "name": "Kurt Rogers"
+  },
+  "maintainers": [
+    {
+      "name": "Kurt Rogers"
+    }
+  ],
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

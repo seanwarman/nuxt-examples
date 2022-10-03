@@ -1,0 +1,22 @@
+<div class="layout-banner">
+  <div class="layout-title">
+    <ng-content select="layout-title"></ng-content>
+  </div>
+  <ng-content *ngIf="(isDesktop | async)" select="desktop-layout-nav"></ng-content>
+</div>
+<ng-content *ngIf="!(isDesktop | async)" select="mobile-layout-nav"></ng-content>
+<div class="layout" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+  <div fxFlex="66" fxFlex.sm="40" fxFlex.xs="40" class="left-flex">
+    <div class="layout-left">
+      <ng-content select="layout-primary-media"></ng-content>
+    </div>
+  </div>
+  <div fxFlex="33" fxFlex.sm="60" fxFlex.xs="60">
+    <div class="layout-right">
+      <div class="layout-content">
+        <ng-content select="layout-content"></ng-content>
+        <app-footer class="layout-footer"></app-footer>
+      </div>
+    </div>
+  </div>
+</div>

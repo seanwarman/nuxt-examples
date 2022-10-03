@@ -1,0 +1,42 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzResponsiveImage from './Tz-ResponsiveImage.vue';
+import { formatData } from './Tz-ResponsiveImage.data.ts';
+
+<Meta
+  title="Components/Informational/Responsive Image"
+  component={TzResponsiveImage}
+  decorators={[withDesign]}
+  argTypes={{}}
+/>
+
+export const Template = (args) => ({
+  components: { TzResponsiveImage },
+  setup() {
+    return { args };
+  },
+  template: `<tz-responsive-image v-bind="args"></tz-responsive-image>`
+});
+
+## Default Product Tile
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      ...formatData
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=1644%3A13692'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

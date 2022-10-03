@@ -1,0 +1,364 @@
+stages:
+  - build
+  - deploy
+  - backup
+  - promote
+  - restore
+
+Build:Docker:
+  stage: build
+  image: docker:19.03.11
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_TEST
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_TEST
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_TEST
+  services:
+    - docker:19.03.11-dind
+  before_script:
+    - apk add aws-cli bash --update-cache
+    - sed -i 's;root:x:0:0:root:/root:/bin/ash;root:x:0:0:root:/root:/bin/bash;' /etc/passwd
+  script:
+    - $(aws ecr get-login --no-include-email --region eu-west-2)
+    - docker pull $REPOSITORY_URL:$CI_COMMIT_SHA 2> /dev/null || true
+    - if [[ "$(docker images -q $REPOSITORY_URL:$CI_COMMIT_SHA  2> /dev/null)" == "" ]]; then docker build -f devops/Dockerfile --tag $REPOSITORY_URL:$CI_COMMIT_SHA --build-arg CI_COMMIT_SHA .; docker push $REPOSITORY_URL:$CI_COMMIT_SHA; fi
+  only:
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+  environment:
+    name: TEST
+
+Deploy:Test:
+  stage: deploy
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_TEST
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_TEST
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_TEST
+  before_script:
+    - apk add aws-cli bash --update-cache
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - aws ecs update-service --cluster $ECS_CLUSTER_TEST --service $ECS_SERVICE_TEST --task-definition $ECS_TASK_TEST --force-new-deploy
+  only:
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+  except:
+    variables:
+      - $CI_PIPELINE_SOURCE == "trigger"
+  needs:
+    - Build:Docker
+  when: manual
+  environment:
+    name: TEST
+
+Deploy:UAT:
+  stage: deploy
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_UAT
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_UAT
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_UAT
+  before_script:
+    - apk add aws-cli bash --update-cache
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - aws ecs update-service --cluster $ECS_CLUSTER_UAT --service $ECS_SERVICE_UAT --task-definition $ECS_TASK_UAT --force-new-deploy
+  only:
+    refs:
+      - master
+      - tags
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+  except:
+    variables:
+      - $CI_PIPELINE_SOURCE == "trigger"
+  needs:
+    - Build:Docker
+  when: manual
+  environment:
+    name: UAT
+
+Deploy:Prod:
+  stage: deploy
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_PROD
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_PROD
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_PROD
+  before_script:
+    - apk add aws-cli bash --update-cache
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - aws ecs update-service --cluster $ECS_CLUSTER_PROD --service $ECS_SERVICE_PROD --task-definition $ECS_TASK_PROD --force-new-deploy
+  only:
+    refs:
+      - master
+      - tags
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+  except:
+    variables:
+      - $CI_PIPELINE_SOURCE == "trigger"
+  needs:
+    - Build:Docker
+  when: manual
+  environment:
+    name: PROD
+
+Backup:UAT:Trigger:
+  stage: backup
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_UAT
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_UAT
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_UAT
+    BACKUP_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_BACKUP
+    BACKUP_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_BACKUP
+    BACKUP_DEFAULT_REGION: $AWS_DEFAULT_REGION_BACKUP
+    BACKUP_BUCKET: $AWS_S3_BUCKET_BACKUP
+  before_script:
+    - apk add curl bash aws-cli
+    - curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest && chmod +x /usr/local/bin/ecs-cli
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - ./devops/run-ecs-task.sh backup $ECS_TASK_UAT $ECS_CLUSTER_UAT eu-west-2 $CI_COMMIT_SHA UAT $BACKUP_BUCKET
+  only:
+    refs:
+      - tags
+    variables:
+      - $ACTION == "promote-uat"
+  needs:
+    - Build:Docker
+  environment:
+    name: UAT
+
+Backup:Prod:Trigger:
+  stage: backup
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_PROD
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_PROD
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_PROD
+    BACKUP_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_BACKUP
+    BACKUP_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_BACKUP
+    BACKUP_DEFAULT_REGION: $AWS_DEFAULT_REGION_BACKUP
+    BACKUP_BUCKET: $AWS_S3_BUCKET_BACKUP
+  before_script:
+    - apk add curl bash aws-cli
+    - curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest && chmod +x /usr/local/bin/ecs-cli
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - ./devops/run-ecs-task.sh backup $ECS_TASK_PROD $ECS_CLUSTER_PROD eu-west-2 $CI_COMMIT_SHA PROD $BACKUP_BUCKET
+  only:
+    refs:
+      - tags
+    variables:
+      - $ACTION == "promote-uat"
+  needs:
+    - Build:Docker
+  environment:
+    name: PROD
+
+Promote:UAT:Trigger:
+  stage: promote
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_PROD
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_PROD
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_PROD
+    BACKUP_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_BACKUP
+    BACKUP_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_BACKUP
+    BACKUP_DEFAULT_REGION: $AWS_DEFAULT_REGION_BACKUP
+    BACKUP_BUCKET: $AWS_S3_BUCKET_BACKUP
+  before_script:
+    - apk add curl bash aws-cli
+    - curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest && chmod +x /usr/local/bin/ecs-cli
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - ./devops/run-ecs-task.sh restore $ECS_TASK_PROD $ECS_CLUSTER_PROD eu-west-2 $CI_COMMIT_SHA UAT $BACKUP_BUCKET
+  only:
+    refs:
+      - tags
+    variables:
+      - $ACTION == "promote-uat"
+  needs:
+    - Backup:UAT:Trigger
+    - Backup:Prod:Trigger
+  environment:
+    name: PROD
+
+Restore:UAT:Trigger:
+  stage: restore
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_UAT
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_UAT
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_UAT
+    BACKUP_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_BACKUP
+    BACKUP_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_BACKUP
+    BACKUP_DEFAULT_REGION: $AWS_DEFAULT_REGION_BACKUP
+    BACKUP_BUCKET: $AWS_S3_BUCKET_BACKUP
+  before_script:
+    - apk add curl bash aws-cli
+    - curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest && chmod +x /usr/local/bin/ecs-cli
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - ./devops/run-ecs-task.sh restore $ECS_TASK_UAT $ECS_CLUSTER_UAT eu-west-2 $CI_COMMIT_SHA PROD $BACKUP_BUCKET
+  only:
+    variables:
+      - $ACTION == "restore-uat"
+    refs:
+      - tags
+  needs:
+    - Backup:UAT:Trigger
+    - Backup:Prod:Trigger
+  environment:
+    name: UAT
+
+Backup:UAT:Manual:
+  stage: backup
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_UAT
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_UAT
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_UAT
+    BACKUP_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_BACKUP
+    BACKUP_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_BACKUP
+    BACKUP_DEFAULT_REGION: $AWS_DEFAULT_REGION_BACKUP
+    BACKUP_BUCKET: $AWS_S3_BUCKET_BACKUP
+  before_script:
+    - apk add curl bash aws-cli
+    - curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest && chmod +x /usr/local/bin/ecs-cli
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - ./devops/run-ecs-task.sh backup $ECS_TASK_UAT $ECS_CLUSTER_UAT eu-west-2 $CI_COMMIT_SHA UAT $BACKUP_BUCKET
+  only:
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+    refs:
+      - tags
+  except:
+    variables:
+      - $CI_PIPELINE_SOURCE == "trigger"
+  needs:
+    - Build:Docker
+  when: manual
+  environment:
+    name: UAT
+
+Backup:Prod:Manual:
+  stage: backup
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_PROD
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_PROD
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_PROD
+    BACKUP_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_BACKUP
+    BACKUP_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_BACKUP
+    BACKUP_DEFAULT_REGION: $AWS_DEFAULT_REGION_BACKUP
+    BACKUP_BUCKET: $AWS_S3_BUCKET_BACKUP
+  before_script:
+    - apk add curl bash aws-cli
+    - curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest && chmod +x /usr/local/bin/ecs-cli
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - ./devops/run-ecs-task.sh backup $ECS_TASK_PROD $ECS_CLUSTER_PROD eu-west-2 $CI_COMMIT_SHA PROD $BACKUP_BUCKET
+  only:
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+    refs:
+      - tags
+  except:
+    variables:
+      - $CI_PIPELINE_SOURCE == "trigger"
+  needs:
+    - Build:Docker
+  when: manual
+  environment:
+    name: PROD
+
+Promote:UAT:Manual:
+  stage: promote
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_PROD
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_PROD
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_PROD
+    BACKUP_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_BACKUP
+    BACKUP_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_BACKUP
+    BACKUP_DEFAULT_REGION: $AWS_DEFAULT_REGION_BACKUP
+    BACKUP_BUCKET: $AWS_S3_BUCKET_BACKUP
+  before_script:
+    - apk add curl bash aws-cli
+    - curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest && chmod +x /usr/local/bin/ecs-cli
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - ./devops/run-ecs-task.sh restore $ECS_TASK_PROD $ECS_CLUSTER_PROD eu-west-2 $CI_COMMIT_SHA UAT $BACKUP_BUCKET
+  only:
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+    refs:
+      - tags
+  except:
+    variables:
+      - $CI_PIPELINE_SOURCE == "trigger"
+  when: manual
+  needs:
+    - Backup:UAT:Manual
+    - Backup:Prod:Manual
+  environment:
+    name: PROD
+
+Restore:UAT:Manual:
+  stage: restore
+  image: alpine:latest
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_UAT
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION_UAT
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_UAT
+    BACKUP_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_BACKUP
+    BACKUP_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_BACKUP
+    BACKUP_DEFAULT_REGION: $AWS_DEFAULT_REGION_BACKUP
+    BACKUP_BUCKET: $AWS_S3_BUCKET_BACKUP
+  before_script:
+    - apk add curl bash aws-cli
+    - curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest && chmod +x /usr/local/bin/ecs-cli
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - ./devops/run-ecs-task.sh restore $ECS_TASK_UAT $ECS_CLUSTER_UAT eu-west-2 $CI_COMMIT_SHA PROD $BACKUP_BUCKET
+  only:
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+    refs:
+      - tags
+  except:
+    variables:
+      - $CI_PIPELINE_SOURCE == "trigger"
+  when: manual
+  needs:
+    - Backup:UAT:Manual
+    - Backup:Prod:Manual
+  environment:
+    name: UAT

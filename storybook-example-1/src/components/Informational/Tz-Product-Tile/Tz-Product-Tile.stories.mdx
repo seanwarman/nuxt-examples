@@ -1,0 +1,1058 @@
+import { reactive } from 'vue';
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzProductTile from './Tz-Product-Tile.vue';
+import TzProductTileGrid from './Tz-Product-Tile-Grid.vue';
+import { productTileContent, lifestyleContent, largeVariantCount } from './Tz-Product-Tile.data';
+
+<Meta
+  title="Components/Informational/Product Tile"
+  component={(TzProductTile, TzProductTileGrid)}
+  decorators={[withDesign]}
+/>
+
+export const Template = (args) => ({
+  components: { TzProductTile },
+  setup: () => ({ args: reactive(args) }),
+  template: `<tz-product-tile v-bind="args" @onFavourite="onFavourite" @onPin="onPin" @onRemove="onRemove" @onCompare="onCompare"></tz-product-tile>`,
+  methods: {
+    onPin(id, pinned) {
+      this.args.pinned = !this.args.pinned;
+      action('onPin')(id, pinned);
+    },
+    onFavourite(id, favourite) {
+      this.args.favourite = !this.args.favourite;
+      action('onFavourite')(id, favourite);
+    },
+    onRemove: action('onRemove'),
+    onCompare: action('onCompare')
+  }
+});
+
+export const GridTemplate = (args) => ({
+  components: { TzProductTileGrid },
+  setup() {
+    return { args };
+  },
+  template: `<div class="container"><tz-product-tile-grid v-bind="args"></tz-product-tile-grid></div>`
+});
+
+# Product Tile
+
+The product tiles are a key sales componet that allow the user to browse many products at once before commiting to a product page, these tiles are dynamically managed by the CMS, they have vairous types and differ in functionality subject to type.
+
+Bikes for example have the most complex functionality and tools associated with the ability to compare.
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      ...productTileContent,
+      favourite: false,
+      pinMode: false,
+      pinned: false,
+      compare: false,
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=149%3A12502'
+      },
+      viewport: {
+        defaultViewport: 'mobile2'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Product Tile (Pin Mode)
+
+<Canvas withSource="open">
+  <Story
+    name="Default (Pin Mode)"
+    args={{ ...productTileContent, pinMode: true }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=149%3A12502'
+      },
+      viewport: {
+        defaultViewport: 'mobile2'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+<Canvas withSource="open">
+  <Story
+    name="Default/Lean"
+    args={{
+      id: 31242141970,
+      sku: 'KS944RUR',
+      title: 'Boardman MHT 8.6 endro Mountain Bike',
+      uri: '/boardman-mht-86-endro-mountain-bike',
+      stock: 152,
+      image: {
+        src: '/boardman-blue-grey.png',
+        alt: 'a picture of something green'
+      },
+      price: {
+        // eslint-disable-next-line prettier/prettier
+        rrp: 349.99,
+        discount: {
+          // eslint-disable-next-line prettier/prettier
+          new_price: 280.0,
+          percentage: 20
+        },
+        finance: {
+          available: true,
+          pm: 13.64,
+          apr: 5.5
+        }
+      },
+      reviews: {
+        score: 4.25,
+        count: 345
+      },
+      lean: true,
+      favourite: false,
+      best_seller: false,
+      summer_sale: true,
+      sale: false,
+      new_in: false,
+      bike: true
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=149%3A12502'
+      },
+      viewport: {
+        defaultViewport: 'mobile2'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withSource="open">
+  <Story
+    name="Default/Collapsed"
+    args={{
+      id: 31242141970,
+      sku: 'KS944RUR',
+      title: 'Boardman MHT 8.6 endro Mountain Bike',
+      uri: '/boardman-mht-86-endro-mountain-bike',
+      stock: 152,
+      image: {
+        src: '/green-bike.jpeg',
+        alt: 'a picture of something green'
+      },
+      price: {
+        // eslint-disable-next-line prettier/prettier
+        rrp: 349.99,
+        discount: {
+          // eslint-disable-next-line prettier/prettier
+          new_price: 280.0,
+          percentage: 20
+        },
+        finance: {
+          available: true,
+          pm: 13.64,
+          apr: 5.5
+        }
+      },
+      reviews: {
+        score: 2.5,
+        count: 345
+      },
+      collapsed: true,
+      favourite: false,
+      best_seller: false,
+      summer_sale: true,
+      sale: false,
+      new_in: false,
+      bike: true
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=149%3A12502'
+      },
+      viewport: {
+        defaultViewport: 'mobile2'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Lifestyle Product Tile
+
+<Canvas withSource="open">
+  <Story
+    name="Lifestyle"
+    args={{
+      id: '31242141978',
+      sku: 'KS944RUR',
+      title: 'Fox Clothing Ranger Long Finger MTB Gloves',
+      uri: '/.Fox-Clothing-Ranger-Long-Finger-MTB-Gloves_231005.htm',
+      stock: 152,
+      price: {
+        // eslint-disable-next-line prettier/prettier
+        rrp: 26.99,
+        discount: {
+          // eslint-disable-next-line prettier/prettier
+          new_price: 21.99
+        },
+        finance: {
+          available: true,
+          pm: 11.64,
+          apr: 5.5
+        }
+      },
+      reviews: {
+        score: 3.25,
+        count: 439
+      },
+      favourite: false,
+      best_seller: false,
+      summer_sale: true,
+      sale: false,
+      new_in: false,
+      lifestyle: true,
+      variants: [...lifestyleContent.variants]
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=149%3A12502'
+      },
+      viewport: {
+        defaultViewport: 'mobile2'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withSource="open">
+  <Story
+    name="Lifestyle/Collapsed"
+    args={{
+      id: '31242141978',
+      sku: 'KS944RUR',
+      title: 'Fox Clothing Ranger Long Finger MTB Gloves',
+      uri: '/.Fox-Clothing-Ranger-Long-Finger-MTB-Gloves_231005.htm',
+      stock: 152,
+      image: {
+        src: '/Fox-Clothing-Ranger-Long-Finger-MTB-Gloves_231005.png',
+        alt: 'a picture of something green'
+      },
+      price: {
+        // eslint-disable-next-line prettier/prettier
+        rrp: 26.99,
+        discount: {
+          // eslint-disable-next-line prettier/prettier
+          new_price: 21.99
+        },
+        finance: {
+          available: true,
+          pm: 11.64,
+          apr: 5.5
+        }
+      },
+      reviews: {
+        score: 3.25,
+        count: 439
+      },
+      collapsed: true,
+      favourite: false,
+      best_seller: false,
+      summer_sale: true,
+      sale: false,
+      new_in: false,
+      bike: false,
+      lifestyle: true
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=149%3A12502'
+      },
+      viewport: {
+        defaultViewport: 'mobile2'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withSource="open">
+  <Story
+    name="Default/Many Variants"
+    args={{
+      id: '31242141970',
+      sku: 'KS944RUR',
+      title: 'Boardman MHT 8.6 endro Mountain Bike',
+      uri: '/boardman-mht-86-endro-mountain-bike',
+      stock: 152,
+      image: {
+        src: '/green-bike.jpeg',
+        alt: 'a picture of something green'
+      },
+      price: {
+        // eslint-disable-next-line prettier/prettier
+        rrp: 349.99,
+        discount: {
+          // eslint-disable-next-line prettier/prettier
+          new_price: 280.0,
+          percentage: 20
+        },
+        finance: {
+          available: true,
+          pm: 13.64,
+          apr: 5.5
+        }
+      },
+      reviews: {
+        score: 4.25,
+        count: 345
+      },
+      favourite: false,
+      best_seller: false,
+      summer_sale: true,
+      sale: false,
+      new_in: false,
+      bike: true,
+      variants: [...largeVariantCount.variants]
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=149%3A12502'
+      },
+      viewport: {
+        defaultViewport: 'mobile2'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+export const products = [
+  {
+    id: '31242141974',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141975',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141976',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141970',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141971',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141972',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141974',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141975',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141976',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141970',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141971',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141972',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141974',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141975',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141976',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141970',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141971',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  },
+  {
+    id: '31242141972',
+    sku: 'KS944RUR',
+    title: 'Boardman MHT 8.6 endro Mountain Bike',
+    uri: '/boardman-mht-86-endro-mountain-bike',
+    stock: 152,
+    image: {
+      src: '/green-bike.jpeg',
+      alt: 'a picture of something green'
+    },
+    price: {
+      // eslint-disable-next-line prettier/prettier
+      rrp: 349.99,
+      discount: {
+        // eslint-disable-next-line prettier/prettier
+        new_price: 280.0,
+        percentage: 20
+      },
+      finance: {
+        available: false,
+        pm: 13.64,
+        apr: 5.5
+      }
+    },
+    reviews: {
+      score: 4.25,
+      count: 345
+    },
+    collapsed: false,
+    lean: false,
+    favourite: false,
+    best_seller: false,
+    summer_sale: true,
+    sale: false,
+    new_in: false,
+    bike: true,
+    variants: [...productTileContent.variants]
+  }
+];
+
+<Canvas>
+  <Story
+    name="Grid Layout"
+    args={{
+      products: products
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=149%3A12502'
+      }
+    }}
+  >
+    {GridTemplate.bind({})}
+  </Story>
+</Canvas>

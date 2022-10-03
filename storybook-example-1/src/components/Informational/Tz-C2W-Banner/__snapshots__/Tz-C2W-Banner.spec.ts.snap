@@ -1,0 +1,72 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<article
+  bannerquote="\\"I didnt know I could claim a mountain bike with a cycle to work scheme!\\""
+  class="relative flex h-[520px] flex-col justify-between px-3 py-5 lg:h-[710px] sm:static sm:grid sm:grid-cols-3 sm:grid-rows-6 sm:justify-start sm:gap-5 sm:bg-transparent md:grid-cols-4"
+  label="Apply Now"
+  slogan="Ride roads on the weekdays, shred trails on the weekends."
+>
+  <div
+    class="relative z-10 pt-1 sm:col-span-1 sm:col-start-1"
+  >
+    <h2
+      class="text-center text-xs font-bold uppercase text-white sm:text-left sm:text-sm sm:tracking-wider sm:text-dark-fade"
+    >
+      
+       cycle to work 
+      
+    </h2>
+  </div>
+  <div
+    class="relative z-10 hidden sm:row-span-2 sm:block"
+  >
+    <h1
+      class="max-w-[140px] text-xl font-bold"
+    >
+      
+      Get your bike on the C2W scheme!
+      
+    </h1>
+  </div>
+  <div
+    class="flex flex-col items-center gap-2 sm:relative sm:col-span-2 sm:col-start-2 sm:row-span-full sm:row-start-1 sm:items-start sm:justify-end sm:p-5 md:col-span-3 md:col-start-2 md:p-12 lg:p-16"
+  >
+    <p
+      class="relative z-10 m-0 max-w-xs text-center text-3xl font-black leading-9 text-white sm:text-left sm:text-2xl"
+    >
+      
+      I didn't know I could claim a mountain bike with a cycle to work scheme!"
+      
+    </p>
+    <p
+      class="relative z-10 m-0 hidden text-sm font-semibold text-white sm:inline md:text-lg"
+    >
+      
+      Ride roads on the weekdays and shred trails on the weekend.
+      
+    </p>
+    <img
+      class="absolute top-0 left-0 z-0 h-full w-full object-cover brightness-75"
+      src="/lifestyle.jpeg"
+    />
+  </div>
+  <div
+    class="relative z-10"
+  >
+    <a
+      class="flex items-center justify-center gap-2 text-sm font-extrabold uppercase tracking-wider focus:ring bg-dark hover:bg-black text-white ring-dark px-8 py-3 rounded-[3px] w-full sm:w-auto"
+      href="https://google.com/"
+      target="_blank"
+    >
+      
+      
+      
+      
+      apply now
+      
+      
+    </a>
+  </div>
+</article>
+`;

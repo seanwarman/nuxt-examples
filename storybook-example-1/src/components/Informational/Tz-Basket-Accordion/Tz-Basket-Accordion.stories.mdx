@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+import TzBasketAccordion from './Tz-Basket-Accordion.vue';
+
+<Meta title="components/Action/Basket Accordion" component={TzBasketAccordion} />
+
+export const ExampleTemplate = (args) => ({
+  components: { TzBasketAccordion },
+  setup() {
+    return { args };
+  },
+  template: `<tz-basket-accordion v-bind="args" />`
+});
+
+# Basket Accordion
+
+<Canvas withSource="open">
+  <Story
+    name="Example"
+    args={{
+      title: 'Delivery',
+      description: 'A really good reassuring point about delivery.',
+      content: `
+              <p>We estimate that your order will be dispatched 22/04/2022 - 26/04/2022. This is based on the item in your order with the longest dispatch time. If you would like to split your order, please log a request through Live Chat after you have received your order confirmation.</p>
+              <p>Please note: We cannot split orders placed using Paypal Credit.</p>
+              <p>If you place an order 2kg or larger than 30cm x 50cm x 15cm, you can expect to receive your parcel via TNT and will be able to track your delivery.</p>
+          `,
+      buttonAlign: 'top'
+    }}
+  >
+    {ExampleTemplate.bind({})}
+  </Story>
+</Canvas>

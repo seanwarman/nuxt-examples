@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_ui_input_fields",
+  "info": {
+    "displayName": "Input Field",
+    "icon": "keyboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "help_text": {
+      "type": "string"
+    },
+    "placeholder": {
+      "type": "string"
+    }
+  }
+}

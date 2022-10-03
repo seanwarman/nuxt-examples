@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: googleSansBold;
+  src: url('/assets/fonts/googlesans/GoogleSans-Bold.ttf') format("truetype");
+}
+@font-face {
+  font-family: googleSansRegular;
+  src: url('/assets/fonts/googlesans/GoogleSans-Regular.ttf') format("truetype");
+}
+@font-face {
+  font-family: googleSansMedium;
+  src: url('/assets/fonts/googlesans/GoogleSans-Medium.ttf') format("truetype");
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: googleSansRegular, "Helvetica Neue", sans-serif; }
+
+.responsiveImage{
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+}
+
+
+@import './assets/styles/material-theme.scss';

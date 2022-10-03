@@ -1,0 +1,32 @@
+<div class="downloads">
+  <div class="intro">
+    <img [src]="downloadIcon" width="32px"/>
+    <h1>Download Resources</h1>
+    <div *ngIf="!downloadEnabled">
+      <p>Please enter your email address to unlock the the resources below.</p>
+      <p>We won’t share it with anyone but may contact you with offers</p>
+      <a href="https://services.google.com/fb/forms/designguide/" target="_blank" mat-stroked-button class="email-collection"><mat-icon svgIcon="lock-open" aria-hidden="true"></mat-icon><span class="hidden">opens in a new tab</span><span>Enter email address to unlock</span></a>
+    </div>
+    <p *ngIf="downloadEnabled" class="downloadEnabled"><span><mat-icon svgIcon="lock-open" aria-hidden="true"></mat-icon> <span>Thanks, go ahead and download the resources below</span></span></p>
+  </div>
+  <div class="list">
+    <div
+      fxFlex="100%"
+      fxLayout.gt-sm="row"
+      fxLayout.lt-sm="column"
+      class="container"
+      *ngFor="let asset of downloadAssets; let i = index"
+    >
+      <div class="column">
+        <h3>{{ asset.name }}</h3>
+      </div>
+      <div class="column desc">{{ asset.description }}</div>
+      <div class="column">
+        <a routerLink="/downloads" mat-stroked-button *ngIf="!downloadEnabled" class="locked" (click)="trackDownloads(i)"><mat-icon svgIcon="lock" aria-hidden="false" aria-label="This resource is locked"></mat-icon></a>
+        <a href="{{asset.link}}" mat-stroked-button *ngIf="downloadEnabled" (click)="trackDownloads(i)">Download {{ asset.type }}</a>
+        <span class="filesize">File Size: {{ asset.size | fileSize }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer [footerWidth]="footerWidth"></app-footer>

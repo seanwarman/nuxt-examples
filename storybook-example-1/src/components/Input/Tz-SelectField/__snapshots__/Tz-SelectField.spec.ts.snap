@@ -1,0 +1,49 @@
+// Vitest Snapshot v1
+
+exports[`TzSelectField > renders correctly 1`] = `
+<div
+  class="flex flex-col gap-1.5"
+  slots="[object Object]"
+>
+  <label
+    class="text-xs font-black uppercase tracking-wider text-gray-800"
+    for="testName"
+  >
+     
+    <!--v-if-->
+  </label>
+  <!--v-if-->
+  <!-- NOTE: ive used a simple styled select box for now - just seems simpler -->
+  <!-- &lt;tz-select :options="options" :name="name" :disabled="disabled" :default-state="defaultState"&gt;&lt;/tz-select&gt; -->
+  <select
+    class="block w-full select-none appearance-none rounded-md border-gray-300 py-3 hover:cursor-pointer focus:border-dark focus:ring-1 focus:ring-dark disabled:cursor-auto text-gray-400"
+    id="testName"
+    name="testName"
+  >
+    <!--v-if-->
+    
+    <option
+      value="1"
+    >
+      option 1 
+    </option>
+    <option
+      value="2"
+    >
+      Another option
+    </option>
+    <option
+      value="3"
+    >
+      The third option is a long one
+    </option>
+    <option
+      value="4"
+    >
+      Last choice
+    </option>
+    
+  </select>
+  <!--v-if-->
+</div>
+`;

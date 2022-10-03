@@ -1,0 +1,44 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzOrderItemsSummary from './Tz-Order-Items-Summary.vue';
+import { orderData } from './Tz-Order-Items-Summary.data.ts';
+import { MobileViewports } from '@/helpers/viewports';
+
+<Meta
+  title="Components/Informational/Order Items Summary"
+  component={TzOrderItemsSummary}
+  decorators={[withDesign]}
+  argTypes={{}}
+/>
+
+export const Template = (args) => ({
+  components: { TzOrderItemsSummary },
+  setup() {
+    return { args };
+  },
+  template: `<tz-order-items-summary v-bind="args"></tz-order-items-summary>`
+});
+
+# Order Summary
+
+<Canvas withSource>
+  <Story
+    name="Default"
+    args={orderData}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/TU7n3pEHWIV5rWZUcUboOP/Ready-for-dev?node-id=1644%3A13692'
+      }
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

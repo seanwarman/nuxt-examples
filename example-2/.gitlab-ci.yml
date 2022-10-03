@@ -1,0 +1,88 @@
+stages:
+  - build
+  - analyze
+  - deploy
+
+Build:Docker:
+  stage: build
+  image: docker:19.03.11
+  services:
+    - docker:19.03.11-dind
+  variables:
+    API_ENDPOINT: https://api-url.nomensa.dummy
+    API_BROWSER_ENDPOINT: https://api-browser-url.nomensa.dummy
+    CMS_API_URL: https://cms-api-url.nomensa.dummy
+    CMS_API_URL_BROWSER: https://cms-api-url-browser.nomensa.dummy
+    ENVIRONMENT: production
+  before_script:
+    - apk add aws-cli bash --update-cache
+  script:
+    - $(aws ecr get-login --no-include-email --region eu-west-2)
+    - docker build --build-arg ENVIRONMENT --build-arg API_ENDPOINT --build-arg API_BROWSER_ENDPOINT --build-arg CMS_API_URL --build-arg CMS_API_URL_BROWSER -f devops/Dockerfile.fe --tag $REPOSITORY_URL:$CI_COMMIT_SHA .
+    - docker push $REPOSITORY_URL:$CI_COMMIT_SHA
+  only:
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+
+Deploy:Test:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add aws-cli bash --update-cache
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - aws ecs update-service --cluster $ECS_CLUSTER_TEST --service $ECS_SERVICE_TEST --task-definition $ECS_TASK_TEST --force-new-deploy
+  only:
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+  dependencies:
+    - Build:Docker
+  when: manual
+  environment: 
+    name: TEST
+
+Deploy:UAT:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add aws-cli bash --update-cache
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - aws ecs update-service --cluster $ECS_CLUSTER_UAT --service $ECS_SERVICE_UAT --task-definition $ECS_TASK_UAT --force-new-deploy
+  only:
+    refs:
+      - master
+      - tags
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+  dependencies:
+    - Build:Docker
+  when: manual
+  environment: 
+    name: UAT
+
+Deploy:Prod:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add aws-cli bash --update-cache
+  script:
+    - export IMAGE="$REPOSITORY_URL:$CI_COMMIT_SHA"
+    - ./devops/elegant.sh devops/ecs-task.json $CI_ENVIRONMENT_NAME
+    - aws ecs register-task-definition --cli-input-json file://devops/ecs-task.json
+    - aws ecs update-service --cluster $ECS_CLUSTER_PROD --service $ECS_SERVICE_PROD --task-definition $ECS_TASK_PROD --force-new-deploy
+  only:
+    refs:
+      - master
+      - tags
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+  dependencies:
+    - Build:Docker
+  when: manual
+  environment: 
+    name: PROD

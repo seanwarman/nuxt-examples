@@ -1,0 +1,250 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzContainer from './Tz-Container.vue';
+import { width } from './Tz-Container.options';
+
+<Meta
+  title="Components/Structural/Container"
+  component={TzContainer}
+  decorators={[withDesign]}
+  argTypes={{
+    styles: {},
+    border: {
+      control: { type: 'boolean' }
+    },
+    default: {
+      control: { type: 'text' }
+    }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzContainer },
+  setup() {
+    return { args };
+  },
+  template: `<tz-container v-bind="args" v-slot>{{ args.default }}</tz-container>`
+});
+
+# Containers
+
+There are various container widths throughout the application. The default one has no `max-width` tailwind class applied and
+instead uses the `.container` breakpoint widths to control its width at different breakpoints.
+
+## Props
+
+> styles: **object**[prop]
+
+There's a prop on the container which is called `styles`. It accepts an object.
+
+```
+{
+  width: 'small' | 'medium' | 'large' | 'fluid',
+  padding: {
+    top_padding: 'small' | 'medium' | 'large' | 'xlarge' | 'none',
+    bottom_padding: 'small' | 'medium' | 'large' | 'xlarge' | 'none',
+    x_padding: 'small' | 'medium' | 'large' | 'xlarge' | 'none',
+    y_padding: 'small' | 'medium' | 'large' | 'xlarge' | 'none',
+  },
+  margin: {
+    top_margin: 'small' | 'medium' | 'large' | 'xlarge' | 'none',
+    bottom_margin: 'small' | 'medium' | 'large' | 'xlarge' | 'none',
+    x_margin: 'small' | 'medium' | 'large' | 'xlarge' | 'none',
+    y_margin: 'small' | 'medium' | 'large' | 'xlarge' | 'none',
+  }
+}
+```
+
+## Default Container
+
+Relies on the `.container` class for its max-widths. These values change based on which breakpoint the page is on.
+
+```
+### TODO
+Add information detailing the different widths at which breakpoint etc. These values have been customised in the tailwind config.
+```
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      default: 'Default container',
+      border: true,
+      styles: {
+        width: 'medium',
+        padding: {
+          top_padding: 'small',
+          bottom_padding: 'medium',
+          y_padding: 'large',
+          x_padding: 'none'
+        },
+        margin: {
+          top_margin: 'small',
+          bottom_margin: 'medium',
+          y_margin: 'large',
+          x_margin: ''
+        }
+      }
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/ah0hV5Vgeaf8AKp66g4MO4/Tredz-grid?node-id=0%3A1'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Variant options
+
+### Small container
+
+Uses the tw `.max-w-small` class
+
+<Canvas>
+  <Story
+    name="Small variant"
+    args={{
+      default: 'Small container',
+      border: true,
+      styles: {
+        width: 'small',
+        padding: {
+          top_padding: 'small',
+          bottom_padding: 'medium',
+          y_padding: 'large',
+          x_padding: 'none'
+        },
+        margin: {
+          top_margin: 'small',
+          bottom_margin: 'medium',
+          y_margin: 'large',
+          x_margin: ''
+        }
+      }
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/ah0hV5Vgeaf8AKp66g4MO4/Tredz-grid?node-id=0%3A1'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Medium container
+
+Uses the tw `.max-w-medium` class
+
+<Canvas>
+  <Story
+    name="Medium variant"
+    args={{
+      default: 'Medium container',
+      border: true,
+      styles: {
+        width: 'medium',
+        padding: {
+          top_padding: 'small',
+          bottom_padding: 'medium',
+          y_padding: 'large',
+          x_padding: 'none'
+        },
+        margin: {
+          top_margin: 'small',
+          bottom_margin: 'medium',
+          y_margin: 'large',
+          x_margin: ''
+        }
+      }
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/ah0hV5Vgeaf8AKp66g4MO4/Tredz-grid?node-id=0%3A1'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Large container
+
+Uses the tw `.max-w-large` class
+
+<Canvas>
+  <Story
+    name="Large variant"
+    args={{
+      default: 'Large container',
+      border: true,
+      styles: {
+        width: 'large',
+        padding: {
+          top_padding: 'small',
+          bottom_padding: 'medium',
+          y_padding: 'large',
+          x_padding: 'none'
+        },
+        margin: {
+          top_margin: 'small',
+          bottom_margin: 'medium',
+          y_margin: 'large',
+          x_margin: ''
+        }
+      }
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/ah0hV5Vgeaf8AKp66g4MO4/Tredz-grid?node-id=0%3A1'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Fluid container
+
+Uses the tw `.max-w-full` class
+
+<Canvas>
+  <Story
+    name="Fluid variant"
+    args={{
+      default: 'Fluid container',
+      border: true,
+      styles: {
+        width: 'fluid',
+        padding: {
+          top_padding: 'small',
+          bottom_padding: 'medium',
+          y_padding: 'large',
+          x_padding: 'none'
+        },
+        margin: {
+          top_margin: 'small',
+          bottom_margin: 'medium',
+          y_margin: 'large',
+          x_margin: ''
+        }
+      }
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/ah0hV5Vgeaf8AKp66g4MO4/Tredz-grid?node-id=0%3A1'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

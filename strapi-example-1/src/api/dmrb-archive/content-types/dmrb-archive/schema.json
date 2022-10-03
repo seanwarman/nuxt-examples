@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "dmrb_archives",
+  "info": {
+    "singularName": "dmrb-archive",
+    "pluralName": "dmrb-archives",
+    "displayName": "DMRB Archive",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "page_title": {
+      "type": "string"
+    },
+    "page_subheading": {
+      "type": "string"
+    },
+    "notices": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::notices.notices"
+    },
+    "search_field": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.input-field",
+      "required": true
+    },
+    "start_field": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.input-field",
+      "required": true
+    },
+    "end_field": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.input-field",
+      "required": true
+    }
+  }
+}

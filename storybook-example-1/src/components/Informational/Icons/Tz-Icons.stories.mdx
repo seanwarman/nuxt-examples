@@ -1,0 +1,326 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzAccountIcon from './Tz-Account-Icon.vue';
+import TzArrowIcon from './Tz-Arrow-Icon.vue';
+import TzBasketIcon from './Tz-Basket-Icon.vue';
+import TzCaretIcon from './Tz-Caret-Icon.vue';
+import TzCheckmarkIcon from './Tz-Checkmark-Icon.vue';
+import TzChevronIcon from './Tz-Chevron-Icon.vue';
+import TzCloseIcon from './Tz-Close-Icon.vue';
+import TzExclaimationIcon from './Tz-Exclaimation-Icon.vue';
+import TzExpandIcon from './Tz-Expand-Icon.vue';
+import TzFilterIcon from './Tz-Filter-Icon.vue';
+import TzMenuIcon from './Tz-Menu-Icon.vue';
+import TzPlusIcon from './Tz-Plus-Icon.vue';
+import TzSearchIcon from './Tz-Search-Icon.vue';
+import TzWishlistIcon from './Tz-Wishlist-Icon.vue';
+
+<Meta title="Elements/Icons" component={TzAccountIcon} />
+
+export const AccountTemplate = (args) => ({
+  components: { TzAccountIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-account-icon class="w-10"/>`
+});
+
+export const ArrowTemplate = (args) => ({
+  components: { TzArrowIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-arrow-icon class="w-10"/>`
+});
+
+export const BasketTemplate = (args) => ({
+  components: { TzBasketIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-basket-icon class="w-10"/>`
+});
+
+export const CaretTemplate = (args) => ({
+  components: { TzCaretIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-caret-icon class="w-10"/>`
+});
+
+export const CheckmarkTemplate = (args) => ({
+  components: { TzCheckmarkIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-checkmark-icon class="w-10"/>`
+});
+
+export const ChevronTemplate = (args) => ({
+  components: { TzChevronIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-chevron-icon class="w-10"/>`
+});
+
+export const CloseTemplate = (args) => ({
+  components: { TzCloseIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-close-icon class="w-10"/>`
+});
+
+export const ExclaimationTemplate = (args) => ({
+  components: { TzExclaimationIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-exclaimation-icon class="w-10"/>`
+});
+
+export const ExpandTemplate = (args) => ({
+  components: { TzExpandIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-expand-icon class="w-10"/>`
+});
+
+export const FilterTemplate = (args) => ({
+  components: { TzFilterIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-filter-icon class="w-10"/>`
+});
+
+export const SearchTemplate = (args) => ({
+  components: { TzSearchIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-search-icon class="w-10"/>`
+});
+
+export const WishlistTemplate = (args) => ({
+  components: { TzWishlistIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-wishlist-icon class="w-10"/>`
+});
+
+export const MenuTemplate = (args) => ({
+  components: { TzMenuIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-menu-icon class="w-10"/>`
+});
+
+export const PlusTemplate = (args) => ({
+  components: { TzPlusIcon },
+  setup() {
+    return { args };
+  },
+  template: `<tz-plus-icon class="w-10"/>`
+});
+
+export const SizeTemplate = (args) => ({
+  components: { TzChevronIcon },
+  setup() {
+    return args;
+  },
+  template: `<tz-chevron-icon v-bind="args"></tz-chevron-icon>`
+});
+
+# Usage
+
+## Size
+
+To set the size of the icon use the tailwind width classes on the component Elements
+
+<Canvas withSource="open">
+  <Story name="size 5">
+    {((args) => ({
+      components: { TzChevronIcon },
+      setup() {
+        return { args };
+      },
+      template: `<tz-chevron-icon class="w-5"/>`
+    })).bind()}
+  </Story>
+  <Story name="size 10">
+    {((args) => ({
+      components: { TzChevronIcon },
+      setup() {
+        return { args };
+      },
+      template: `<tz-chevron-icon class="w-10"/>`
+    })).bind()}
+  </Story>
+</Canvas>
+
+## Colour
+
+To set the colour of the icon set the text colour on the component elements using tailwind classes.
+
+<Canvas withSource="open">
+  <Story name="color grey">
+    {((args) => ({
+      components: { TzChevronIcon },
+      setup() {
+        return { args };
+      },
+      template: `<tz-chevron-icon class="w-10 text-gray-400"/>`
+    })).bind()}
+  </Story>
+  <Story name="colour primary">
+    {((args) => ({
+      components: { TzChevronIcon },
+      setup() {
+        return { args };
+      },
+      template: `<tz-chevron-icon class="w-10 text-primary"/>`
+    })).bind()}
+  </Story>
+</Canvas>
+
+## Orientation
+
+To set the orientation of the icon, add a tailwind rotate class to the component element.
+
+<Canvas withSource="open">
+  <Story
+    name="rotate 0"
+    args={{
+      class: 'w-10'
+    }}
+  >
+    {((args) => ({
+      components: { TzChevronIcon },
+      setup() {
+        return { args };
+      },
+      template: `<tz-chevron-icon class="w-10"/>`
+    })).bind()}
+  </Story>
+  <Story name="rotate 90">
+    {(args) => ({
+      components: { TzChevronIcon },
+      setup() {
+        return { args };
+      },
+      template: `<tz-chevron-icon class="w-10 rotate-90"/>`
+    })}
+  </Story>
+  <Story name="rotate 180">
+    {(args) => ({
+      components: { TzChevronIcon },
+      setup() {
+        return { args };
+      },
+      template: `<tz-chevron-icon class="w-10 rotate-180"/>`
+    })}
+  </Story>
+  <Story name="rotate 270">
+    {(args) => ({
+      components: { TzChevronIcon },
+      setup() {
+        return { args };
+      },
+      template: `<tz-chevron-icon class="w-10 -rotate-90"/>`
+    })}
+  </Story>
+</Canvas>
+
+# Icons
+
+## tz-account-icon
+
+<Canvas>
+  <Story name="Account">{AccountTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-arrow-icon
+
+<Canvas>
+  <Story name="Arrow">{ArrowTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-basket-icon
+
+<Canvas>
+  <Story name="Basket">{BasketTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-caret-icon
+
+<Canvas>
+  <Story name="Caret">{CaretTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-checkmark-icon
+
+<Canvas>
+  <Story name="Checkmark">{CheckmarkTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-chevron-icon
+
+<Canvas>
+  <Story name="Chevron">{ChevronTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-close-icon
+
+<Canvas>
+  <Story name="Close">{CloseTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-exclaimation-icon
+
+<Canvas>
+  <Story name="Exclaimation">{ExclaimationTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-expand-icon
+
+<Canvas>
+  <Story name="Expand">{ExpandTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-filter-icon
+
+<Canvas>
+  <Story name="Filter">{FilterTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-search-icon
+
+<Canvas>
+  <Story name="Search">{SearchTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-wislist-icon
+
+<Canvas>
+  <Story name="Wishlist">{WishlistTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-menu-icon
+
+<Canvas>
+  <Story name="Menu">{MenuTemplate.bind({})}</Story>
+</Canvas>
+
+## tz-plus-icon
+
+<Canvas>
+  <Story name="Plus">{PlusTemplate.bind({})}</Story>
+</Canvas>

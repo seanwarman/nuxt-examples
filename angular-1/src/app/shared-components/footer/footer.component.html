@@ -1,0 +1,60 @@
+<footer [ngClass]="isFullWidth() ? 'fullWidth' : ''">
+  <div class="innerFooter">
+    <div class="clearfix">
+      <a href="https://www.google.com/"
+         target="_blank"
+        ><img
+          [src]="googleImage"
+          class="googleLogo"
+          width="155px"
+          height="auto"
+          alt="Google logo"
+      /></a>
+    </div>
+    <mat-nav-list class="footerNavList">
+      <a
+        class="footerNavLinks"
+        mat-list-item
+        routerLink="/downloads"
+        >Downloads</a
+      >
+      <a
+        class="footerNavLinks"
+        mat-list-item
+        href="https://meetingdevices.withgoogle.com"
+        target="_blank"
+        >
+        <span>Google Meet hardware</span>
+        <span class="hidden">(Opens in new tab)</span>
+      </a>
+      <a
+        class="footerNavLinks"
+        mat-list-item
+        href="https://gsuite.google.com/contact-form/meet-hardware/"
+        target="_blank"
+        >
+        <span>Contact Us</span>
+        <span class="hidden">(Opens in new tab)</span>
+      </a>
+    </mat-nav-list>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="bottom-links">
+    <a href="https://policies.google.com/privacy?hl=en" target="_blank">
+      <span>Policy</span>
+      <span class="hidden">(Opens in new tab)</span>
+    </a>
+    <a href="https://policies.google.com/terms?hl=en" target="_blank">
+      <span>Terms</span>
+      <span class="hidden">(Opens in new tab)</span>
+    </a>
+    <a href="https://www.google.com/intl/en/about/" target="_blank">
+      <span>About Google</span>
+      <span class="hidden">(Opens in new tab)</span>
+    </a>
+    <a href="https://www.google.com/intl/en/about/products/" target="_blank">
+      <span>Google products</span>
+      <span class="hidden">(Opens in new tab)</span>
+    </a>
+  </div>
+</footer>

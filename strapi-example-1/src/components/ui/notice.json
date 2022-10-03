@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_ui_notices",
+  "info": {
+    "displayName": "Notice",
+    "icon": "bullhorn",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "PRIMARY",
+        "SECONDARY",
+        "SUCCESS",
+        "DANGER",
+        "WARNING",
+        "INFO",
+        "LIGHT",
+        "DARK"
+      ]
+    },
+    "content": {
+      "type": "richtext",
+      "maxLength": 800,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

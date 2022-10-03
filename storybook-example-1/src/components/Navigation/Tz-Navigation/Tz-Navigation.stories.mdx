@@ -1,0 +1,75 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import TzNavigation from './Tz-Navigation.vue';
+import { navigation, footerNav } from '../Tz-NavPrimary/Tz-NavPrimary.options';
+
+<Meta
+  title="Layout/Navigation"
+  component={TzNavigation}
+  argTypes={{
+    default: {
+      control: { type: 'number' }
+    }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzNavigation },
+  setup() {
+    return { args };
+  },
+  template: `<tz-navigation v-bind="args"></tz-navigation>`
+});
+
+# Navigation Header
+
+Top-level primary navigation.
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      main: navigation,
+      footer: footerNav
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/proto/f9CMMSAWFsKLRUa9xPbpGr/design-system?page-id=60%3A129&node-id=69%3A189&viewport=340%2C48%2C0.47&scaling=min-zoom'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props & slots
+
+<ArgsTable story="Default" />
+
+<Canvas>
+  <Story
+    name="Mobile"
+    args={{
+      main: navigation,
+      footer: navigation
+    }}
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/proto/f9CMMSAWFsKLRUa9xPbpGr/design-system?page-id=60%3A129&node-id=69%3A189&viewport=340%2C48%2C0.47&scaling=min-zoom'
+      },
+      viewport: {
+        //👇default viewport 'Large Mobile'
+        defaultViewport: 'mobile2'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props & slots
+
+<ArgsTable story="Mobile" />

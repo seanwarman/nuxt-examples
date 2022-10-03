@@ -1,0 +1,37 @@
+{
+  "kind": "singleType",
+  "collectionName": "dmrb_helps",
+  "info": {
+    "singularName": "dmrb-help",
+    "pluralName": "dmrb-help-content",
+    "displayName": "DMRB Help",
+    "name": "DMRB Help",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "page_title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "page_subheading": {
+      "type": "text",
+      "maxLength": 800
+    },
+    "sections": {
+      "type": "component",
+      "repeatable": true,
+      "component": "snippets.section"
+    },
+    "notices": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::notices.notices"
+    }
+  }
+}

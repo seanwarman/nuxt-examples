@@ -1,0 +1,22 @@
+// Vitest Snapshot v1
+
+exports[`Chevron button setup > renders correctly 1`] = `
+<button
+  class="grid h-16 w-16 place-items-center bg-dark text-white ring-dark hover:bg-black focus:ring"
+>
+  <svg
+    class="w-5 rotate-180"
+    data-test="tz-ct-chevron-button"
+    fill="none"
+    viewBox="0 0 32 32"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      clip-rule="evenodd"
+      d="M19.775 16 4.555 7.629l2.89-5.258L24.26 11.62c3.454 1.9 3.454 6.863 0 8.762L7.447 29.63l-2.893-5.26L19.774 16Z"
+      fill="currentColor"
+      fill-rule="evenodd"
+    />
+  </svg>
+</button>
+`;

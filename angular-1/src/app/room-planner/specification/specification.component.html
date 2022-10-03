@@ -1,0 +1,21 @@
+<div *ngFor="let section of sections">
+  <div *ngIf="!(section.accessor =='microphoneNumber' && section.value =='0')" class="room-specification">
+  <img src="{{section.icon}}" width="32px" height="auto" />
+  <div class="specifiationText">
+    <label class="fieldLabel">{{ section.title }}</label>
+    <div class="specificationDetails">
+      <span class="fieldValue" [innerHTML]="section.value"></span>
+      <a class="linkFlex" *ngIf="section.learnLink" [routerLink]="[section.learnLink]"
+      >
+        <div class="innerLinkFlex">
+          Learn more
+          <span class="sr-only">
+            about {{section.title}}
+          </span>
+        </div>
+        <mat-icon>launch</mat-icon>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>

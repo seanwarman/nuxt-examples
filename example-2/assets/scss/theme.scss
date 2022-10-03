@@ -1,0 +1,95 @@
+@import './variables';
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-vue/src/index.scss';
+
+// Checkbox / Radio button Overrides
+.custom-control {
+  display: flex;
+  align-items: center;
+}
+
+.custom-control-label {
+  font-size: 0.875rem;
+  font-weight: $font-weight-normal;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+  top: 0.15rem;
+}
+
+.custom-control-label::before {
+  border-color: $input-checkbox-border-color;
+}
+
+.custom-control-input {
+  height: 1rem;
+}
+
+.sr-only-mobile {
+  @media screen and (max-width: $breakpoint-md - 1) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+// https://jira.nomensa.com/browse/HERB-171
+// https://jira.nomensa.com/browse/HERB-152
+// remove focus ring on a11y focused headlines
+#main-heading[tabindex='-1']:focus,
+#main-content[tabindex='-1']:focus,
+#results[tabindex='-1']:focus {
+  outline: 0 !important;
+}
+
+// wcag 2.2 input focus overrides, targeting type text and search
+form {
+  .input-group-text, .form-control {
+    transition: none;
+  }
+  
+  input {
+    &[type="text"],
+    &[type="search"] {
+      transition: none;
+    }
+  }
+
+  .custom-select:focus {
+    box-shadow: 0 0 0 3px $brand-primary, 0 0 0 5px #ffffff;
+    border-radius: 8px;
+    border: 1px solid #ffffff;
+  }
+
+  input {
+    &[type="text"]:focus,
+    &[type="search"]:focus {
+      box-shadow: 0 0 0 3px $brand-primary, 0 0 0 5px #ffffff;
+      border-radius: 8px;
+      border: 1px solid #ffffff;
+    }
+
+    &.form-control:focus {
+      border-color: #ffffff;
+    }
+  }
+}
+
+// buttons and some components handle this themselves
+// otherwise global
+#main-content {
+  a:not(.btn):not(.resource-card):not(.discipline-card-link):focus,
+  a:not(.btn):not(.resource-card):not(.discipline-card-link):focus-visible {
+    background: $brand-primary;
+    color: #ffffff;
+    box-shadow: 0 0 0 4px $brand-primary;
+    outline: none;
+  }
+}

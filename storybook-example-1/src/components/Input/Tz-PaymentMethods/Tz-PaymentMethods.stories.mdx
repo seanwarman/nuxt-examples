@@ -1,0 +1,163 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzPaymentMethods from './Tz-PaymentMethods.vue';
+import { MobileViewports } from '@/helpers/viewports';
+
+<Meta title="components/Input/Payment Methods" component={TzPaymentMethods} />
+
+export const Template = (args) => ({
+  components: { TzPaymentMethods },
+  setup() {
+    return { args };
+  },
+  template: '<tz-payment-methods v-bind="args"></tz-payment-methods>'
+});
+
+# Payment Options
+
+## Payment options
+
+<Canvas withSource>
+  <Story
+    name="Payment methods"
+    args={{
+      name: 'payment-method-2',
+      options: [
+        {
+          value: 'card',
+          label: 'Pay by Card',
+          icons: [
+            {
+              src: '/payment-options/payment-option-amex.png',
+              width: 60,
+              height: 38,
+              alt: ''
+            },
+            {
+              src: '/payment-options/payment-option-visa.png',
+              width: 61,
+              height: 38,
+              alt: ''
+            },
+            {
+              src: '/payment-options/payment-option-maestro.png',
+              width: 53,
+              height: 32,
+              alt: ''
+            },
+            {
+              src: '/payment-options/payment-option-mastercard.png',
+              width: 62,
+              height: 37,
+              alt: ''
+            }
+          ]
+        },
+        {
+          value: 'applepay',
+          label: 'Apply Pay',
+          icons: [
+            {
+              src: '/payment-options/payment-option-applepay-wide.png',
+              width: 58,
+              height: 24,
+              alt: ''
+            }
+          ]
+        },
+        {
+          value: 'paypal',
+          label: 'PayPal',
+          icons: [
+            {
+              src: '/payment-options/payment-option-paypal-wide.png',
+              width: 96,
+              height: 26,
+              alt: ''
+            }
+          ]
+        }
+      ]
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Invalid
+
+<Canvas withSource>
+  <Story
+    name="Invalid"
+    args={{
+      name: 'payment-method',
+      options: [
+        {
+          value: 'card',
+          label: 'Pay by Card',
+          icons: [
+            {
+              src: '/payment-options/payment-option-amex.png',
+              width: 60,
+              height: 38,
+              alt: ''
+            },
+            {
+              src: '/payment-options/payment-option-visa.png',
+              width: 61,
+              height: 38,
+              alt: ''
+            },
+            {
+              src: '/payment-options/payment-option-maestro.png',
+              width: 53,
+              height: 32,
+              alt: ''
+            },
+            {
+              src: '/payment-options/payment-option-mastercard.png',
+              width: 62,
+              height: 37,
+              alt: ''
+            }
+          ]
+        },
+        {
+          value: 'applepay',
+          label: 'Apply Pay',
+          icons: [
+            {
+              src: '/payment-options/payment-option-applepay-wide.png',
+              width: 58,
+              height: 24,
+              alt: ''
+            }
+          ]
+        },
+        {
+          value: 'paypal',
+          label: 'PayPal',
+          icons: [
+            {
+              src: '/payment-options/payment-option-paypal-wide.png',
+              width: 96,
+              height: 26,
+              alt: ''
+            }
+          ]
+        }
+      ],
+      error: 'Please select a payment method'
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

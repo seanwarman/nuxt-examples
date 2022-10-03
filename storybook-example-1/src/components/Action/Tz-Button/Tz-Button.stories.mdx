@@ -1,0 +1,189 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+
+import TzButton from './Tz-Button.vue';
+import TzPayPalButton from './Tz-PayPalButton.vue';
+import TzFilterIcon from '../../Informational/Icons/Tz-Filter-Icon.vue';
+import TzCloseIcon from '../../Informational/Icons/Tz-Close-Icon.vue';
+
+import TzChevron from '../../Informational/Icons/Tz-Chevron-Icon.vue';
+
+<Meta
+  title="Components/Action/Button"
+  component={TzButton}
+  decorators={[withDesign]}
+  argTypes={{
+    type: {
+      options: ['primary', 'secondary', 'finance'],
+      control: { type: 'radio' }
+    },
+    size: {
+      options: ['sm', 'md', 'lg'],
+      control: { type: 'radio' }
+    },
+    iconPosition: {
+      options: ['before', 'after'],
+      control: { type: 'radio' }
+    },
+    label: {
+      control: { type: 'text' },
+      name: 'label'
+    }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzButton },
+  setup() {
+    return { args };
+  },
+  template: '<tz-button v-bind="args" @click="clicked">{{ args.label }}</tz-button>',
+  methods: {
+    clicked: action('clicked')
+  }
+});
+
+export const ButtonIconTemplate = (args) => ({
+  components: { TzButton, TzCloseIcon },
+  setup() {
+    return { args };
+  },
+  template: `
+    <tz-button v-bind="args">
+        {{ args.label }} 
+        <template #icon>
+          <tz-close-icon class="w-5" />
+        </template>
+    </tz-button>
+  `
+});
+
+# Default button
+
+This is the standard template for the Button component
+
+## Example
+
+<Canvas withSource="open" withToolbar>
+  <Story
+    name="Default"
+    args={{
+      type: 'primary',
+      size: 'md',
+      label: 'Button text'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+## Types
+
+<Canvas withSource>
+  <Story
+    name="Primary"
+    args={{
+      type: 'primary',
+      label: 'Primary'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Secondary"
+    args={{
+      type: 'secondary',
+      label: 'Secondary'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Finance"
+    args={{
+      type: 'finance',
+      label: 'Finance'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Types
+
+<Canvas withSource>
+  <Story
+    name="Small"
+    args={{
+      type: 'primary',
+      size: 'sm',
+      label: 'Small (sm)'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Medium"
+    args={{
+      type: 'primary',
+      size: 'md',
+      label: 'Medium (md)'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Large"
+    args={{
+      type: 'primary',
+      size: 'lg',
+      label: 'Large (lg)'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Button with Icon
+
+<Canvas withSource>
+  <Story
+    name="Icon before text"
+    args={{
+      label: 'Icon before text'
+    }}
+  >
+    {ButtonIconTemplate.bind({})}
+  </Story>
+  <Story
+    name="Icon after text"
+    args={{
+      label: 'Icon after text',
+      iconPosition: 'after'
+    }}
+  >
+    {ButtonIconTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## PayPal Button
+
+export const PayPalTemplate = (args) => ({
+  components: { TzPayPalButton },
+  setup() {
+    return { args };
+  },
+  template: '<tz-pay-pal-button />',
+  methods: {
+    clicked: action('clicked')
+  }
+});
+
+<Canvas withSource>
+  <Story name="PayPal" args={{}}>
+    {PayPalTemplate.bind({})}
+  </Story>
+</Canvas>

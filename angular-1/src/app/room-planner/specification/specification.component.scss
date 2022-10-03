@@ -1,0 +1,58 @@
+.room-specification {
+
+  overflow: auto;
+  margin: 8px 0px 8px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding-bottom:16px;
+  line-height: 1.8;
+  letter-spacing: 0.25px;
+  line-height: 20px;
+  color: rgba(0,0,0,0.60);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+  .specifiationText{
+    padding-left: 16px;
+    width: 100%;
+
+    .specificationDetails{
+      display: flex;
+      justify-content: space-between;
+      a {
+        text-decoration: none;
+      }
+      .linkFlex{
+        display: flex;
+        .innerLinkFlex{
+          margin-right: 8px;
+          .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+          }
+        }
+      }
+    }
+  }
+
+  span {
+    display: block;
+  }
+
+  img {
+    float: left;
+  }
+}
+
+.fieldLabel{
+  font-family: googleSansMedium;
+}
+.fieldValue{
+  font-family: googleSansRegular;
+}

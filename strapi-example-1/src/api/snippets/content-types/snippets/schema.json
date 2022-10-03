@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "snippets",
+  "info": {
+    "singularName": "snippets",
+    "pluralName": "snippets-content",
+    "displayName": "Snippets",
+    "name": "Snippets",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

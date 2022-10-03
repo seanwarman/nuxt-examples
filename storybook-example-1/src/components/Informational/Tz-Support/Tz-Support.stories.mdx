@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import TzSupport from './Tz-Support.vue';
+
+<Meta
+  title="Components/Informational/Support"
+  component={TzSupport}
+  argTypes={{
+    size: {
+      options: {
+        small: 'small',
+        large: 'large'
+      },
+      control: { type: 'radio' }
+    }
+  }}
+/>
+
+export const Template = (args) => ({
+  components: { TzSupport },
+  setup() {
+    return { args };
+  },
+  template: '<tz-support v-bind="args" />'
+});
+
+# Support
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      size: 'small',
+      image: {
+        src: '/src/assets/support-img.jpg',
+        alt: 'support blog image'
+      },
+      content: {
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        content: 'Praesent semper lacus leo, eu ultrices dolor pulvinar vel.',
+        link: {
+          url: 'https://google.com'
+        }
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

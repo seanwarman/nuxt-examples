@@ -1,0 +1,92 @@
+.subsectionNav {
+  width: auto;
+}
+
+.introduction {
+  display: none;
+}
+
+.subNavLink{
+  height:96px;
+  flex-direction: column;
+  font-family: googleSansMedium;
+  font-size: 14px;
+  color: #5f6368;
+  min-width: 130px;
+  padding: 0 16px;
+}
+
+.subNavLink:hover{
+  color: rgba(0,0,0,0.87);
+}
+
+.subNavIcon{
+  width: 25px;
+  height: 25px;
+  padding: 8px;
+}
+
+.mat-tab-nav-bar .mat-primary {
+  .mat-tab-links {
+    justify-content: center;
+  }
+}
+
+::ng-deep .mat-tab-label-active {
+  opacity: 1;
+}
+
+::ng-deep .layout-banner .mat-tab-nav-bar {
+  border-bottom: 0px!important;
+}
+
+@media screen and (max-width: 959px) {
+  .subsectionNav {
+    height: auto;
+    width: 100%;
+    overflow: auto;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: none;
+
+    .mat-tab-link {
+      min-width: 120px;
+    }
+    .subNavIcon {
+      display: none;
+    }
+
+    ::ng-deep .mat-ink-bar {
+      margin-bottom: 6px;
+    }
+
+    .introduction {
+      display: inline-flex;
+      font-size: 14px !important;
+      font-family: googleSansBold !important;
+      color: #202124 !important;
+      min-width: 168px;
+      // background: #F9F9F9;
+      z-index: 1;
+      opacity: 1;
+
+
+      .sectionIcon {
+        width: 21px;
+        height: 21px;
+        margin-right: 7px;
+      }
+    }
+
+    ::ng-deep .mat-ink-bar .introduction{
+      visibility: hidden !important;
+    }
+
+    .subNavLink {
+      height: 48px;
+      flex-direction: row;
+      font-family: googleSansMedium;
+      font-size: 14px;
+      color: #5f6368;
+    }
+  }
+}

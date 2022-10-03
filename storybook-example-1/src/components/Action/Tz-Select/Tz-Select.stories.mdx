@@ -1,0 +1,67 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import TzSelect from './Tz-Select.vue';
+import { options, regionData } from './Tz-Select.data';
+
+<Meta title="components/Action/Select dropdown" component={TzSelect} />
+
+export const Template = (args) => ({
+  components: { TzSelect },
+  setup() {
+    return { args };
+  },
+  template: '<tz-select v-bind="args" @selectedOption="selectedOption"/>',
+  methods: {
+    selectedOption: action('selectedOption')
+  }
+});
+
+# Select Dropdown
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      description: 'A select',
+      options: options,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Small
+
+<Canvas withSource="open">
+  <Story
+    name="Small"
+    args={{
+      class: 'w-48',
+      description: 'A small select',
+      options: options,
+      size: 'small'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Small With Icon Prefix
+
+<Canvas withSource="open">
+  <Story
+    name="Small With Icon"
+    args={{
+      class: 'w-48',
+      description: 'A small select with prefixes',
+      options: options,
+      size: 'small',
+      colorIcons: true
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

@@ -1,0 +1,31 @@
+// Vitest Snapshot v1
+
+exports[`USP Ribbon setup > renders correctly 1`] = `
+<div
+  class="tz-offer-container"
+>
+  
+  <div>
+    <span
+      class="tz-offer-item"
+    >
+      FREE DELIVERY
+    </span>
+  </div>
+  <div>
+    <span
+      class="tz-offer-item"
+    >
+      0% APR FINANCE
+    </span>
+  </div>
+  <div>
+    <span
+      class="tz-offer-item"
+    >
+      PRICE MATCH
+    </span>
+  </div>
+  
+</div>
+`;

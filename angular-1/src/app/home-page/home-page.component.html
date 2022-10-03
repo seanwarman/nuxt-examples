@@ -1,0 +1,44 @@
+<mat-drawer-container
+  class="sidenav-container"
+  hasBackdrop="false"
+>
+  <div class="homepage">
+    <div class="header"
+         (transitionend)="transitionEnd($event)"
+         (transitionrun)="transitionStart($event)"
+         [ngClass]="this.openedDraw === 'loaded' ? '' :'opened'"
+         [style.display]="this.display"
+    >
+      <h1 class="title">Room Design Guide</h1>
+      <p class="sub-title">The room is key to a good meeting setup, this is the toolkit for getting the room fit for purpose.</p>
+    </div>
+    <div
+      class="homepage-model-wrapper"
+      [ngClass]="this.openedDraw === 'loaded' ? '' :'opened'"
+    >
+      <app-homepage-model
+        class="responsiveCanvas"
+        modelPath='/assets/3dModels/homepage/HomePage.gltf'
+        (hotspotEvent)="hotspotEvent($event)"
+        [selectedHotspot]="openedDraw"
+      ></app-homepage-model>
+      <mat-drawer
+        #drawer
+        class="sidenav"
+        fixedInViewport="false"
+        mode="over"
+        position="end"
+      >
+        <div class="homepage-drawer-header">
+          <button mat-button (click)="hotspotEvent('')">Close <mat-icon aria-hidden="false" aria-label="Close button">close</mat-icon>
+          </button>
+        </div>
+        <app-content-hotspot-drawer
+          [selectedHotspot]="openedDraw"
+          (hotspotEvent)="hotspotEvent($event)"
+        >
+        </app-content-hotspot-drawer>
+      </mat-drawer>
+    </div>
+  </div>
+</mat-drawer-container>

@@ -1,0 +1,76 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+import { withDesign } from 'storybook-addon-designs';
+import { MobileViewports } from '@/helpers/viewports';
+
+import { exampleSteps } from './Tz-Progress-Bar.data';
+import TzProgressBar from './Tz-Progress-Bar.vue';
+
+import vueRouter from 'storybook-vue3-router';
+
+<Meta title="Components/Action/Progress Bar" component={TzProgressBar} decorators={[withDesign, vueRouter()]} />
+
+export const Template = (args) => ({
+  components: { TzProgressBar },
+  setup() {
+    return { args };
+  },
+  template: '<tz-progress-bar v-bind="args" />'
+});
+
+# Progress Bar
+
+<Canvas withSource>
+  <Story
+    name="Default"
+    args={{
+      steps: [...exampleSteps],
+      selectedStepIndex: 0
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+## Three Steps Example
+
+<Canvas withSource isColumn>
+  <Story
+    name="Step 1"
+    args={{
+      steps: [...exampleSteps],
+      selectedStepIndex: 0
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Step 2"
+    args={{
+      steps: [...exampleSteps],
+      selectedStepIndex: 1
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Step 3"
+    args={{
+      steps: [...exampleSteps],
+      selectedStepIndex: 2
+    }}
+    parameters={{
+      chromatic: { viewports: MobileViewports }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
